@@ -1,12 +1,11 @@
 ---
+extends: _layouts.docs
+section: content
 language: es
 title: Presupuestos
 description: Presupuestos en Finerdy - Control de gastos por categoría y período
 ---
 
-@extends('_layouts.docs')
-
-@section('content')
 # Presupuestos
 
 Los presupuestos te ayudan a controlar cuánto gastás en cada categoría. Definís un límite y Finerdy te muestra cuánto llevás gastado.
@@ -183,4 +182,3 @@ Podés **archivar** un presupuesto que ya no usás:
 ## Próximos pasos
 
 Aprendé a organizar tus finanzas en diferentes contextos con [Workspaces](/docs/workspaces/).
-@endsection

@@ -1,12 +1,11 @@
 ---
+extends: _layouts.docs
+section: content
 language: es
 title: Conceptos básicos
 description: Cuentas, categorías y moneda de referencia en Finerdy
 ---
 
-@extends('_layouts.docs')
-
-@section('content')
 # Conceptos básicos
 
 Antes de empezar a usar Finerdy, es importante entender los conceptos fundamentales que organizan tus finanzas.
@@ -154,4 +153,3 @@ Si necesitás otra moneda de referencia, creá un nuevo workspace.
 ## Próximos pasos
 
 Ahora que entendés los conceptos básicos, aprendé sobre los diferentes [tipos de transacciones](/docs/transacciones/).
-@endsection

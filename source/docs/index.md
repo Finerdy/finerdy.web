@@ -1,12 +1,11 @@
 ---
+extends: _layouts.docs
+section: content
 language: es
 title: Introducción
 description: Documentación de Finerdy - Aprende a usar la aplicación
 ---
 
-@extends('_layouts.docs')
-
-@section('content')
 # Introducción a Finerdy
 
 Finerdy es una aplicación de contabilidad personal diseñada para personas que manejan múltiples monedas. Si cobrás en dólares, ahorrás en euros y gastás en pesos, sabés lo difícil que es tener una visión clara de tus finanzas. Finerdy resuelve ese problema.
@@ -50,4 +49,3 @@ Para usar Finerdy efectivamente, necesitás entender algunos conceptos:
 5. **Empezá a registrar** - Cada vez que entra o sale dinero, registralo.
 
 ¿Listo para empezar? Continuá con [Conceptos básicos](/docs/conceptos/).
-@endsection

@@ -1,12 +1,11 @@
 ---
+extends: _layouts.docs
+section: content
 language: es
 title: Workspaces
 description: Workspaces en Finerdy - Espacios separados para diferentes contextos financieros
 ---
 
-@extends('_layouts.docs')
-
-@section('content')
 # Workspaces
 
 Los workspaces te permiten separar tus finanzas en diferentes contextos. Podés tener uno para tus gastos personales, otro para los gastos familiares, y otro para tu negocio.
@@ -213,4 +212,3 @@ Esta acción no se puede deshacer.
 ---
 
 ¡Eso es todo! Ya sabés cómo funciona Finerdy. Empezá a registrar tus transacciones y tomá el control de tus finanzas.
-@endsection

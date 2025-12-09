@@ -1,12 +1,11 @@
 ---
+extends: _layouts.docs
+section: content
 language: es
 title: Reportes
 description: Reportes en Finerdy - Balance general y Estado de resultados
 ---
 
-@extends('_layouts.docs')
-
-@section('content')
 # Reportes
 
 Los reportes son donde Finerdy brilla. Acá podés ver tus finanzas consolidadas, con todas las monedas convertidas a tu moneda de referencia.
@@ -190,4 +189,3 @@ Diferencia: +4.74 USD (ganancia)
 ## Próximos pasos
 
 Aprendé a controlar tus gastos con [Presupuestos](/docs/presupuestos/).
-@endsection

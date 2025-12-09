@@ -1,12 +1,11 @@
 ---
+extends: _layouts.docs
+section: content
 language: es
 title: Transacciones
 description: Tipos de transacciones en Finerdy - ingresos, gastos, transferencias, cambios y correcciones
 ---
 
-@extends('_layouts.docs')
-
-@section('content')
 # Transacciones
 
 Las transacciones son el corazón de Finerdy. Cada movimiento de dinero se registra como una transacción.
@@ -244,4 +243,3 @@ Todas las transacciones tienen estos campos:
 ## Próximos pasos
 
 Ahora que entendés los tipos de transacciones, aprendé sobre los [Reportes](/docs/reportes/) para analizar tus finanzas.
-@endsection
