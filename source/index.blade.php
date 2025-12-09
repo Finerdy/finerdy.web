@@ -8,6 +8,7 @@ language: es
     @include('_partials.header')
     @include('_partials.hero')
     @include('_partials.features')
-    @include('_partials.how-it-works')
+    @include('_partials.extras')
+    @include('_partials.waitlist')
     @include('_partials.footer')
 @endsection

@@ -1,6 +1,6 @@
 ---
 language: en
-description: Manage your personal and family finances simply and intelligently
+description: Unified personal accounting for those who earn and spend in multiple currencies
 ---
 
 @extends('_layouts.main')
@@ -9,6 +9,7 @@ description: Manage your personal and family finances simply and intelligently
     @include('_partials.header')
     @include('_partials.hero')
     @include('_partials.features')
-    @include('_partials.how-it-works')
+    @include('_partials.extras')
+    @include('_partials.waitlist')
     @include('_partials.footer')
 @endsection

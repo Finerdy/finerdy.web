@@ -4,8 +4,11 @@ return [
     'production' => false,
     'baseUrl' => '',
     'siteName' => 'Finerdy',
-    'siteDescription' => 'Gestiona tus finanzas personales y familiares de forma simple e inteligente',
-    'siteDescriptionEn' => 'Manage your personal and family finances simply and intelligently',
+    'siteDescription' => 'Contabilidad personal unificada para quienes cobran y gastan en múltiples monedas',
+    'siteDescriptionEn' => 'Unified personal accounting for those who earn and spend in multiple currencies',
+
+    // Formspree endpoint (create your form at formspree.io)
+    'formspreeId' => 'mpwvjokz',
 
     // Multi-language support
     'languages' => [
@@ -24,110 +27,122 @@ return [
         'es' => [
             'nav' => [
                 'features' => 'Características',
-                'howItWorks' => 'Cómo funciona',
+                'waitlist' => 'Solicitar acceso',
             ],
             'hero' => [
-                'title' => 'Toma el control de tus finanzas',
-                'subtitle' => 'Gestiona tus finanzas personales y familiares de forma simple. Múltiples cuentas, múltiples monedas, un solo lugar.',
+                'title' => 'Una sola contabilidad, todas tus monedas',
+                'subtitle' => 'Cobras en dólares, ahorras en euros, gastas en pesos. ¿Cuánto ganaste este mes? ¿Cuánto gastaste? Finerdy unifica todo en una moneda de referencia para que finalmente entiendas tus números.',
+                'cta' => 'Solicitar acceso',
             ],
             'features' => [
-                'title' => 'Todo lo que necesitas para organizar tu dinero',
+                'title' => 'El problema de vivir en múltiples monedas, resuelto',
                 'items' => [
                     [
-                        'title' => 'Multi-espacio',
-                        'description' => 'Crea espacios separados para tus finanzas personales, familiares o de negocio. Cada uno con sus propias cuentas y colaboradores.',
+                        'title' => 'Moneda de referencia',
+                        'description' => 'Elegí tu moneda base (USD, EUR, lo que prefieras) y ve todos tus balances, ingresos y gastos convertidos automáticamente. Por fin, una foto clara de tus finanzas.',
                     ],
                     [
-                        'title' => 'Multi-moneda',
-                        'description' => 'Gestiona cuentas en diferentes monedas con conversión automática. Ideal para quienes manejan dólares, euros y moneda local.',
+                        'title' => 'Cada cuenta en su moneda',
+                        'description' => 'Tu cuenta en USA en dólares, la de Europa en euros, el efectivo en pesos. Cada una opera en su moneda nativa, sin forzar conversiones artificiales.',
                     ],
                     [
-                        'title' => 'Reportes inteligentes',
-                        'description' => 'Visualiza tus ingresos, gastos y balances por período. Entiende hacia dónde va tu dinero con gráficos claros.',
+                        'title' => 'Conversiones reales',
+                        'description' => 'Registrá cambios de moneda con el tipo de cambio real que conseguiste. Nada de tasas oficiales que no existen. Tus números reflejan tu realidad.',
                     ],
                     [
-                        'title' => 'Colaboración familiar',
-                        'description' => 'Invita a tu familia a colaborar en el control de gastos. Cada uno puede registrar sus transacciones en tiempo real.',
+                        'title' => 'Reportes que tienen sentido',
+                        'description' => '¿Cuánto gastaste en total este mes? ¿Cómo viene el año? Reportes unificados que suman peras con manzanas (convertidas a tu moneda base).',
                     ],
                 ],
             ],
-            'howItWorks' => [
-                'title' => 'Simple de usar',
-                'steps' => [
+            'extras' => [
+                'title' => 'Y también...',
+                'items' => [
                     [
-                        'number' => '1',
-                        'title' => 'Crea tu espacio',
-                        'description' => 'Configura tu espacio de trabajo personal o familiar en segundos.',
+                        'title' => 'Simple para registrar',
+                        'description' => 'Interfaz limpia y rápida. Registrar un gasto toma segundos, no minutos.',
                     ],
                     [
-                        'number' => '2',
-                        'title' => 'Agrega tus cuentas',
-                        'description' => 'Registra tus cuentas bancarias, billeteras y efectivo.',
+                        'title' => 'Reportes para nerds',
+                        'description' => 'Después, los números como te gustan: detallados, filtrables, exportables.',
                     ],
                     [
-                        'number' => '3',
-                        'title' => 'Registra movimientos',
-                        'description' => 'Anota tus ingresos, gastos y transferencias día a día.',
+                        'title' => 'Tus datos, tu control',
+                        'description' => 'Sin conectar bancos ni compartir credenciales. Registro manual, privacidad total.',
                     ],
                 ],
+            ],
+            'waitlist' => [
+                'title' => 'Solicita acceso anticipado',
+                'subtitle' => 'Estamos en beta privada. Dejanos tu email y te avisamos cuando haya lugar.',
+                'placeholder' => 'tu@email.com',
+                'button' => 'Solicitar invitación',
+                'success' => '¡Gracias! Te contactaremos pronto.',
+                'privacy' => 'No spam. Solo te escribimos cuando haya novedades.',
             ],
             'footer' => [
-                'tagline' => 'Finanzas personales simplificadas',
+                'tagline' => 'Contabilidad personal para el mundo real',
                 'copyright' => 'Todos los derechos reservados.',
             ],
         ],
         'en' => [
             'nav' => [
                 'features' => 'Features',
-                'howItWorks' => 'How it works',
+                'waitlist' => 'Request access',
             ],
             'hero' => [
-                'title' => 'Take control of your finances',
-                'subtitle' => 'Manage your personal and family finances simply. Multiple accounts, multiple currencies, one place.',
+                'title' => 'One ledger, all your currencies',
+                'subtitle' => 'You earn in dollars, save in euros, spend in pesos. How much did you make this month? How much did you spend? Finerdy unifies everything into a reference currency so you can finally understand your numbers.',
+                'cta' => 'Request access',
             ],
             'features' => [
-                'title' => 'Everything you need to organize your money',
+                'title' => 'The multi-currency problem, solved',
                 'items' => [
                     [
-                        'title' => 'Multi-workspace',
-                        'description' => 'Create separate spaces for your personal, family, or business finances. Each with its own accounts and collaborators.',
+                        'title' => 'Reference currency',
+                        'description' => 'Choose your base currency (USD, EUR, whatever you prefer) and see all your balances, income, and expenses automatically converted. Finally, a clear picture of your finances.',
                     ],
                     [
-                        'title' => 'Multi-currency',
-                        'description' => 'Manage accounts in different currencies with automatic conversion. Ideal for those handling dollars, euros, and local currency.',
+                        'title' => 'Each account in its currency',
+                        'description' => 'Your US account in dollars, the European one in euros, cash in pesos. Each operates in its native currency, no artificial conversions forced.',
                     ],
                     [
-                        'title' => 'Smart reports',
-                        'description' => 'View your income, expenses, and balances by period. Understand where your money goes with clear charts.',
+                        'title' => 'Real conversions',
+                        'description' => 'Record currency exchanges with the actual rate you got. No official rates that don\'t exist. Your numbers reflect your reality.',
                     ],
                     [
-                        'title' => 'Family collaboration',
-                        'description' => 'Invite your family to collaborate on expense tracking. Everyone can record their transactions in real time.',
+                        'title' => 'Reports that make sense',
+                        'description' => 'How much did you spend in total this month? How\'s the year going? Unified reports that add apples and oranges (converted to your base currency).',
                     ],
                 ],
             ],
-            'howItWorks' => [
-                'title' => 'Simple to use',
-                'steps' => [
+            'extras' => [
+                'title' => 'And also...',
+                'items' => [
                     [
-                        'number' => '1',
-                        'title' => 'Create your space',
-                        'description' => 'Set up your personal or family workspace in seconds.',
+                        'title' => 'Simple to log',
+                        'description' => 'Clean and fast interface. Recording an expense takes seconds, not minutes.',
                     ],
                     [
-                        'number' => '2',
-                        'title' => 'Add your accounts',
-                        'description' => 'Register your bank accounts, wallets, and cash.',
+                        'title' => 'Reports for nerds',
+                        'description' => 'Then, the numbers the way you like them: detailed, filterable, exportable.',
                     ],
                     [
-                        'number' => '3',
-                        'title' => 'Record movements',
-                        'description' => 'Log your income, expenses, and transfers day by day.',
+                        'title' => 'Your data, your control',
+                        'description' => 'No connecting banks or sharing credentials. Manual logging, total privacy.',
                     ],
                 ],
+            ],
+            'waitlist' => [
+                'title' => 'Request early access',
+                'subtitle' => "We're in private beta. Leave your email and we'll let you know when there's room.",
+                'placeholder' => 'you@email.com',
+                'button' => 'Request invitation',
+                'success' => 'Thanks! We\'ll be in touch soon.',
+                'privacy' => 'No spam. We only write when there\'s news.',
             ],
             'footer' => [
-                'tagline' => 'Personal finances simplified',
+                'tagline' => 'Personal accounting for the real world',
                 'copyright' => 'All rights reserved.',
             ],
         ],

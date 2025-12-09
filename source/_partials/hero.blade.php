@@ -8,7 +8,7 @@
         <div class="text-center">
             <!-- Logo grande -->
             <div class="mb-8">
-                <img src="/assets/images/logo.svg" alt="Finerdy" class="mx-auto h-32 w-auto">
+                <img src="/assets/images/logo.svg" alt="Finerdy" class="mx-auto h-28 w-auto">
             </div>
 
             <!-- Headline -->
@@ -17,17 +17,18 @@
             </h1>
 
             <!-- Subheadline -->
-            <p class="mx-auto mt-6 max-w-2xl text-lg text-gray-600 sm:text-xl">
+            <p class="mx-auto mt-6 max-w-2xl text-lg text-gray-600 sm:text-xl leading-relaxed">
                 {{ $t['hero']['subtitle'] }}
             </p>
 
-            <!-- Decorative element -->
-            <div class="mt-12 flex justify-center">
-                <div class="flex items-center gap-4">
-                    <div class="h-px w-16 bg-gradient-to-r from-transparent to-primary-300"></div>
-                    <div class="h-2 w-2 rounded-full bg-primary-500"></div>
-                    <div class="h-px w-16 bg-gradient-to-l from-transparent to-primary-300"></div>
-                </div>
+            <!-- CTA Button -->
+            <div class="mt-10">
+                <a href="#waitlist" class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 transition-colors">
+                    {{ $t['hero']['cta'] }}
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+                    </svg>
+                </a>
             </div>
         </div>
     </div>

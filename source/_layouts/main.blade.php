@@ -9,7 +9,8 @@
         <title>{{ $page->title ? $page->title . ' | ' . $page->siteName : $page->siteName }}</title>
 
         <!-- Favicon -->
-        <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
+        <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
         <!-- Open Graph -->
         <meta property="og:title" content="{{ $page->title ?? $page->siteName }}">

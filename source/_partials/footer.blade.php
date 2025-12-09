@@ -23,8 +23,8 @@
                 <a href="#features" class="text-sm text-gray-500 hover:text-primary-600 transition-colors">
                     {{ $t['nav']['features'] }}
                 </a>
-                <a href="#how-it-works" class="text-sm text-gray-500 hover:text-primary-600 transition-colors">
-                    {{ $t['nav']['howItWorks'] }}
+                <a href="#waitlist" class="text-sm text-gray-500 hover:text-primary-600 transition-colors">
+                    {{ $t['nav']['waitlist'] }}
                 </a>
                 <a href="{{ $otherLangUrl }}" class="text-sm text-gray-500 hover:text-primary-600 transition-colors">
                     {{ $otherLangName }}
