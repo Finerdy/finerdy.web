@@ -1,0 +1,42 @@
+@php
+    $lang = $page->language ?? 'es';
+    $t = $page->translations[$lang];
+    $otherLang = $lang === 'es' ? 'en' : 'es';
+    $otherLangUrl = $lang === 'es' ? '/en/' : '/';
+    $otherLangName = $lang === 'es' ? 'English' : 'Español';
+@endphp
+
+<footer class="bg-gray-50 border-t border-gray-100">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-center gap-8 md:flex-row md:justify-between">
+            <!-- Logo and tagline -->
+            <div class="flex flex-col items-center md:items-start gap-2">
+                <a href="{{ $lang === 'es' ? '/' : '/en/' }}" class="flex items-center gap-2">
+                    <img src="/assets/images/logo.svg" alt="Finerdy" class="h-8 w-auto">
+                    <span class="text-lg font-bold text-gray-900">{{ $page->siteName }}</span>
+                </a>
+                <p class="text-sm text-gray-500">{{ $t['footer']['tagline'] }}</p>
+            </div>
+
+            <!-- Links -->
+            <div class="flex items-center gap-6">
+                <a href="#features" class="text-sm text-gray-500 hover:text-primary-600 transition-colors">
+                    {{ $t['nav']['features'] }}
+                </a>
+                <a href="#how-it-works" class="text-sm text-gray-500 hover:text-primary-600 transition-colors">
+                    {{ $t['nav']['howItWorks'] }}
+                </a>
+                <a href="{{ $otherLangUrl }}" class="text-sm text-gray-500 hover:text-primary-600 transition-colors">
+                    {{ $otherLangName }}
+                </a>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="mt-8 border-t border-gray-200 pt-8 text-center">
+            <p class="text-sm text-gray-400">
+                &copy; {{ date('Y') }} {{ $page->siteName }}. {{ $t['footer']['copyright'] }}
+            </p>
+        </div>
+    </div>
+</footer>
