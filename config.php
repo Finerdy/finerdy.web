@@ -27,6 +27,7 @@ return [
         'es' => [
             'nav' => [
                 'features' => 'Características',
+                'docs' => 'Documentación',
                 'waitlist' => 'Solicitar acceso',
             ],
             'hero' => [
@@ -88,6 +89,7 @@ return [
         'en' => [
             'nav' => [
                 'features' => 'Features',
+                'docs' => 'Documentation',
                 'waitlist' => 'Request access',
             ],
             'hero' => [

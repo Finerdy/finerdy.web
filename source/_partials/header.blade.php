@@ -22,6 +22,9 @@
                 <a href="#features" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
                     {{ $t['nav']['features'] }}
                 </a>
+                <a href="{{ $lang === 'es' ? '/docs/' : '/en/docs/' }}" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                    {{ $t['nav']['docs'] }}
+                </a>
                 <a href="#waitlist" class="rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-700 transition-colors">
                     {{ $t['nav']['waitlist'] }}
                 </a>
@@ -51,6 +54,9 @@
             <div class="flex flex-col gap-2">
                 <a href="#features" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-900">
                     {{ $t['nav']['features'] }}
+                </a>
+                <a href="{{ $lang === 'es' ? '/docs/' : '/en/docs/' }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-900">
+                    {{ $t['nav']['docs'] }}
                 </a>
                 <a href="#waitlist" class="block rounded-md px-3 py-2 text-base font-medium text-primary-600 hover:bg-primary-50">
                     {{ $t['nav']['waitlist'] }}
