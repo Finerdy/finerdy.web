@@ -26,6 +26,8 @@ Finerdy has **5 types** of transactions, each with a specific purpose:
 
 ## Income
 
+@include('_partials.badge', ['type' => 'income'])
+
 An **income** represents money entering an account.
 
 ### When to use it
@@ -59,6 +61,8 @@ Date: 2025-01-05
 
 ## Expense
 
+@include('_partials.badge', ['type' => 'expense'])
+
 An **expense** represents money leaving an account.
 
 ### When to use it
@@ -91,6 +95,8 @@ Date: 2025-01-10
 ---
 
 ## Transfer
+
+@include('_partials.badge', ['type' => 'transfer'])
 
 A **transfer** moves money between two accounts of the **same currency**.
 
@@ -137,6 +143,8 @@ Result:
 ---
 
 ## Currency exchange
+
+@include('_partials.badge', ['type' => 'exchange'])
 
 An **exchange** converts money from one currency to another.
 
@@ -193,6 +201,8 @@ This difference appears in your reports.
 ---
 
 ## Correction
+
+@include('_partials.badge', ['type' => 'correction'])
 
 A **correction** adjusts an account's balance when there's a difference with reality.
 

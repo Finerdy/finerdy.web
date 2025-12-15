@@ -26,6 +26,8 @@ Finerdy tiene **5 tipos** de transacciones, cada uno con un propósito específi
 
 ## Ingreso
 
+@include('_partials.badge', ['type' => 'ingreso'])
+
 Un **ingreso** representa dinero que entra a una cuenta.
 
 ### Cuándo usarlo
@@ -59,6 +61,8 @@ Fecha: 2025-01-05
 
 ## Gasto
 
+@include('_partials.badge', ['type' => 'gasto'])
+
 Un **gasto** representa dinero que sale de una cuenta.
 
 ### Cuándo usarlo
@@ -91,6 +95,8 @@ Fecha: 2025-01-10
 ---
 
 ## Transferencia
+
+@include('_partials.badge', ['type' => 'transferencia'])
 
 Una **transferencia** mueve dinero entre dos cuentas de la **misma moneda**.
 
@@ -137,6 +143,8 @@ Resultado:
 ---
 
 ## Cambio de moneda
+
+@include('_partials.badge', ['type' => 'cambio'])
 
 Un **cambio** (o exchange) convierte dinero de una moneda a otra.
 
@@ -193,6 +201,8 @@ Esta diferencia aparece en tus reportes.
 ---
 
 ## Corrección
+
+@include('_partials.badge', ['type' => 'corrección'])
 
 Una **corrección** ajusta el balance de una cuenta cuando hay una diferencia con la realidad.
 
