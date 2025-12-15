@@ -194,7 +194,7 @@ Esta diferencia aparece en tus reportes.
 
 ## Corrección
 
-Una **corrección** ajusta el balance de una cuenta sin categoría.
+Una **corrección** ajusta el balance de una cuenta cuando hay una diferencia con la realidad.
 
 ### Cuándo usarlo
 
@@ -205,7 +205,7 @@ Una **corrección** ajusta el balance de una cuenta sin categoría.
 ### Campos
 
 - **Cuenta** - La cuenta a ajustar
-- **Monto** - El ajuste (positivo o negativo)
+- **Monto** - El balance real actual (Finerdy calcula la diferencia)
 - **Descripción** - Razón del ajuste
 - **Fecha** - Cuándo aplicar
 
@@ -214,8 +214,8 @@ Una **corrección** ajusta el balance de una cuenta sin categoría.
 ```
 Tipo: Corrección
 Cuenta: Efectivo (ARS)
-Monto: +5,000.00 ARS
-Descripción: Ajuste por diferencia de caja
+Balance actual: 45,000.00 ARS
+Descripción: Arqueo de caja mensual
 Fecha: 2025-01-25
 ```
 
@@ -223,7 +223,9 @@ Fecha: 2025-01-25
 
 - Las correcciones **no tienen categoría**.
 - No afectan los reportes de ingresos/gastos.
-- Úsalas solo cuando sea necesario.
+- Crean un **checkpoint** que bloquea las transacciones anteriores.
+
+Para más detalles sobre correcciones y checkpoints, consultá la página dedicada: [Correcciones y Checkpoints](/docs/correcciones/).
 
 ---
 

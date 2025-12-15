@@ -194,7 +194,7 @@ This difference appears in your reports.
 
 ## Correction
 
-A **correction** adjusts an account's balance without a category.
+A **correction** adjusts an account's balance when there's a difference with reality.
 
 ### When to use it
 
@@ -205,7 +205,7 @@ A **correction** adjusts an account's balance without a category.
 ### Fields
 
 - **Account** - The account to adjust
-- **Amount** - The adjustment (positive or negative)
+- **Amount** - The actual current balance (Finerdy calculates the difference)
 - **Description** - Reason for the adjustment
 - **Date** - When to apply it
 
@@ -214,8 +214,8 @@ A **correction** adjusts an account's balance without a category.
 ```
 Type: Correction
 Account: Cash (USD)
-Amount: +50.00 USD
-Description: Cash count adjustment
+Current balance: 450.00 USD
+Description: Monthly cash count
 Date: 2025-01-25
 ```
 
@@ -223,7 +223,9 @@ Date: 2025-01-25
 
 - Corrections **don't have a category**.
 - They don't affect income/expense reports.
-- Use them only when necessary.
+- They create a **checkpoint** that locks previous transactions.
+
+For more details about corrections and checkpoints, see the dedicated page: [Corrections and Checkpoints](/en/docs/corrections/).
 
 ---
 
