@@ -13,13 +13,14 @@ $icons = [
     'tip' => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 inline-block mr-1"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>',
     'danger' => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 inline-block mr-1"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" /></svg>',
 ];
+
 @endphp
 
 <div class="my-4 p-4 border-l-4 rounded-r-lg not-prose {{ $styles[$type] }}">
     @if($title)
         <p class="font-semibold mb-1">{!! $icons[$type] !!} {{ $title }}</p>
     @endif
-    <div class="text-sm">
-        {{ $slot }}
-    </div>
+    <p class="text-sm">
+        {!! Illuminate\Support\Str::inlineMarkdown(trim($slot)) !!}
+    </p>
 </div>
