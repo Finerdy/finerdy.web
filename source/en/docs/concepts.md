@@ -96,6 +96,66 @@ Transfers and currency exchanges don't use categories.
 
 ---
 
+## Categories vs Tags
+
+**Categories** and **tags** are two complementary ways to organize your transactions, but they work differently.
+
+### Categories: vertical classification
+
+Categories function as a **vertical classification**: each transaction belongs to a single category. It's an exclusive organization.
+
+```
+Categories
+├── Food
+├── Transportation
+├── Utilities
+└── Entertainment
+```
+
+If you buy something at the grocery store, it goes in the "Food" category. It can't be in two categories at once.
+
+### Tags: cross-cutting grouping
+
+Tags function as a **cross-cutting grouping**: they can span multiple categories. A transaction can have multiple tags.
+
+```
+Tag "vacation-2025"
+├── Hotel (category: Lodging)
+├── Restaurant (category: Food)
+├── Flight (category: Transportation)
+└── Tour (category: Entertainment)
+```
+
+All these expenses share the "vacation-2025" tag, even though each has its own category.
+
+### Practical example
+
+Imagine you want to track expenses for a trip to Miami:
+
+| Expense | Category | Tags |
+|---------|----------|------|
+| Hotel | Lodging | vacation, miami-2025 |
+| Uber to airport | Transportation | vacation, miami-2025 |
+| Restaurant dinner | Food | vacation, miami-2025 |
+| Museum entry | Entertainment | vacation, miami-2025 |
+
+With **categories**, you can see how much you spend on food overall (including your daily life and vacations).
+
+With **tags**, you can filter "miami-2025" and see the total trip cost, regardless of which categories the expenses fell into.
+
+### When to use each
+
+| Need | Use |
+|------|-----|
+| Classify an expense by type | Category |
+| Group expenses for a project or event | Tag |
+| See totals by category (food, transportation) | Category |
+| See totals by context (vacation, work) | Tag |
+| Monthly reports by expense type | Category |
+| Track a specific goal | Tag |
+
+---
+
 ## Reference currency
 
 The **reference currency** (or base currency) is Finerdy's most important concept.

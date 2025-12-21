@@ -96,6 +96,66 @@ Las transferencias y cambios de moneda no usan categorías.
 
 ---
 
+## Categorías vs Tags
+
+Las **categorías** y los **tags** son dos formas complementarias de organizar tus transacciones, pero funcionan de manera diferente.
+
+### Categorías: clasificación vertical
+
+Las categorías funcionan como una **clasificación vertical**: cada transacción pertenece a una única categoría. Es una organización excluyente.
+
+```
+Categorías
+├── Comida
+├── Transporte
+├── Servicios
+└── Entretenimiento
+```
+
+Si comprás algo en el supermercado, va a la categoría "Comida". No puede estar en dos categorías al mismo tiempo.
+
+### Tags: agrupación transversal
+
+Los tags funcionan como una **agrupación transversal**: pueden cruzar múltiples categorías. Una transacción puede tener varios tags.
+
+```
+Tag "vacaciones-2025"
+├── Hotel (categoría: Alojamiento)
+├── Restaurante (categoría: Comida)
+├── Avión (categoría: Transporte)
+└── Excursión (categoría: Entretenimiento)
+```
+
+Todos estos gastos comparten el tag "vacaciones-2025", aunque cada uno tenga su propia categoría.
+
+### Ejemplo práctico
+
+Imaginá que querés trackear los gastos de un viaje a Miami:
+
+| Gasto | Categoría | Tags |
+|-------|-----------|------|
+| Hotel | Alojamiento | vacaciones, miami-2025 |
+| Uber al aeropuerto | Transporte | vacaciones, miami-2025 |
+| Cena en restaurante | Comida | vacaciones, miami-2025 |
+| Entrada a museo | Entretenimiento | vacaciones, miami-2025 |
+
+Con las **categorías**, podés ver cuánto gastás en comida en general (incluyendo tu día a día y las vacaciones).
+
+Con los **tags**, podés filtrar "miami-2025" y ver el costo total del viaje, sin importar en qué categorías cayeron los gastos.
+
+### Cuándo usar cada uno
+
+| Necesidad | Usar |
+|-----------|------|
+| Clasificar un gasto por tipo | Categoría |
+| Agrupar gastos de un proyecto o evento | Tag |
+| Ver totales por rubro (comida, transporte) | Categoría |
+| Ver totales por contexto (vacaciones, trabajo) | Tag |
+| Reportes mensuales por tipo de gasto | Categoría |
+| Seguimiento de un objetivo específico | Tag |
+
+---
+
 ## Moneda de referencia
 
 La **moneda de referencia** (o moneda base) es el concepto más importante de Finerdy.
