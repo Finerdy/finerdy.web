@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ $page->language ?? 'es' }}">
+<html lang="{{ $page->language ?? 'en' }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,28 +18,28 @@
     </head>
     <body class="bg-white text-gray-900 antialiased">
         @php
-            $lang = $page->language ?? 'es';
-            $docsBase = $lang === 'es' ? '/docs' : '/en/docs';
-            $homeUrl = $lang === 'es' ? '/' : '/en/';
-            $otherLangUrl = $lang === 'es' ? '/en/docs/' : '/docs/';
-            $otherLangName = $lang === 'es' ? 'EN' : 'ES';
+            $lang = $page->language ?? 'en';
+            $docsBase = $lang === 'en' ? '/docs' : '/es/docs';
+            $homeUrl = $lang === 'en' ? '/' : '/es/';
+            $otherLangUrl = $lang === 'en' ? '/es/docs/' : '/docs/';
+            $otherLangName = $lang === 'en' ? 'ES' : 'EN';
 
-            $navItems = $lang === 'es' ? [
-                ['url' => $docsBase . '/', 'title' => 'Introducción'],
-                ['url' => $docsBase . '/conceptos/', 'title' => 'Conceptos básicos'],
-                ['url' => $docsBase . '/transacciones/', 'title' => 'Transacciones'],
-                ['url' => $docsBase . '/correcciones/', 'title' => 'Correcciones'],
-                ['url' => $docsBase . '/reportes/', 'title' => 'Reportes'],
-                ['url' => $docsBase . '/presupuestos/', 'title' => 'Presupuestos'],
-                ['url' => $docsBase . '/workspaces/', 'title' => 'Workspaces'],
-                ['url' => 'https://api.finerdy.app/docs/api#/', 'title' => 'API Docs', 'external' => true],
-            ] : [
+            $navItems = $lang === 'en' ? [
                 ['url' => $docsBase . '/', 'title' => 'Introduction'],
                 ['url' => $docsBase . '/concepts/', 'title' => 'Basic concepts'],
                 ['url' => $docsBase . '/transactions/', 'title' => 'Transactions'],
                 ['url' => $docsBase . '/corrections/', 'title' => 'Corrections'],
                 ['url' => $docsBase . '/reports/', 'title' => 'Reports'],
                 ['url' => $docsBase . '/budgets/', 'title' => 'Budgets'],
+                ['url' => $docsBase . '/workspaces/', 'title' => 'Workspaces'],
+                ['url' => 'https://api.finerdy.app/docs/api#/', 'title' => 'API Docs', 'external' => true],
+            ] : [
+                ['url' => $docsBase . '/', 'title' => 'Introducción'],
+                ['url' => $docsBase . '/conceptos/', 'title' => 'Conceptos básicos'],
+                ['url' => $docsBase . '/transacciones/', 'title' => 'Transacciones'],
+                ['url' => $docsBase . '/correcciones/', 'title' => 'Correcciones'],
+                ['url' => $docsBase . '/reportes/', 'title' => 'Reportes'],
+                ['url' => $docsBase . '/presupuestos/', 'title' => 'Presupuestos'],
                 ['url' => $docsBase . '/workspaces/', 'title' => 'Workspaces'],
                 ['url' => 'https://api.finerdy.app/docs/api#/', 'title' => 'API Docs', 'external' => true],
             ];

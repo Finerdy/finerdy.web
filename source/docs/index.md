@@ -1,51 +1,51 @@
 ---
 extends: _layouts.docs
 section: content
-language: es
-title: Introducción
-description: Documentación de Finerdy - Aprende a usar la aplicación
+language: en
+title: Introduction
+description: Finerdy Documentation - Learn how to use the app
 ---
 
-# Introducción a Finerdy
+# Introduction to Finerdy
 
-Finerdy es una aplicación de contabilidad personal diseñada para personas que manejan múltiples monedas. Si cobrás en dólares, ahorrás en euros y gastás en pesos, sabés lo difícil que es tener una visión clara de tus finanzas. Finerdy resuelve ese problema.
+Finerdy is a personal accounting app designed for people who manage multiple currencies. If you get paid in dollars, save in euros, and spend in pesos, you know how hard it is to have a clear view of your finances. Finerdy solves that problem.
 
-## El problema
+## The problem
 
-Cuando tus finanzas están distribuidas en varias monedas, surgen preguntas difíciles de responder:
+When your finances are spread across multiple currencies, difficult questions arise:
 
-- ¿Cuánto gané este mes en total?
-- ¿Cuánto gasté realmente?
-- ¿Cuál es mi patrimonio neto?
+- How much did I earn this month in total?
+- How much did I really spend?
+- What's my net worth?
 
-Las aplicaciones tradicionales no están preparadas para esto. Te obligan a elegir una sola moneda o hacen conversiones automáticas con tasas que no reflejan tu realidad.
+Traditional apps aren't built for this. They force you to choose a single currency or do automatic conversions with rates that don't reflect your reality.
 
-## La solución
+## The solution
 
-Finerdy te permite:
+Finerdy lets you:
 
-1. **Mantener cada cuenta en su moneda nativa** - Tu cuenta en USA sigue en dólares, la de Europa en euros.
-2. **Definir una moneda de referencia** - Elegís en qué moneda querés ver tus reportes consolidados.
-3. **Registrar conversiones reales** - Cuando cambiás moneda, registrás el tipo de cambio real que conseguiste.
-4. **Ver reportes unificados** - Todos tus números convertidos a tu moneda de referencia.
+1. **Keep each account in its native currency** - Your US account stays in dollars, your European one in euros.
+2. **Define a reference currency** - Choose which currency you want to see your consolidated reports in.
+3. **Record real conversions** - When you exchange currency, record the actual rate you got.
+4. **See unified reports** - All your numbers converted to your reference currency.
 
-## Conceptos clave
+## Key concepts
 
-Para usar Finerdy efectivamente, necesitás entender algunos conceptos:
+To use Finerdy effectively, you need to understand some concepts:
 
-- **[Cuentas](/docs/conceptos/#cuentas)** - Representan tus cuentas bancarias, billeteras o efectivo.
-- **[Categorías](/docs/conceptos/#categorias)** - Organizan tus transacciones por tipo (Supermercado, Salario, etc).
-- **[Moneda de referencia](/docs/conceptos/#moneda-de-referencia)** - La moneda en la que ves todos tus reportes.
-- **[Transacciones](/docs/transacciones/)** - Los movimientos de dinero (ingresos, gastos, transferencias, cambios).
-- **[Presupuestos](/docs/presupuestos/)** - Límites de gasto por categoría.
-- **[Workspaces](/docs/workspaces/)** - Espacios separados para diferentes contextos (personal, familiar, negocio).
+- **[Accounts](/en/docs/concepts/#accounts)** - Represent your bank accounts, wallets, or cash.
+- **[Categories](/en/docs/concepts/#categories)** - Organize your transactions by type (Groceries, Salary, etc).
+- **[Reference currency](/en/docs/concepts/#reference-currency)** - The currency in which you see all your reports.
+- **[Transactions](/en/docs/transactions/)** - Money movements (income, expenses, transfers, exchanges).
+- **[Budgets](/en/docs/budgets/)** - Spending limits by category.
+- **[Workspaces](/en/docs/workspaces/)** - Separate spaces for different contexts (personal, family, business).
 
-## Primeros pasos
+## Getting started
 
-1. **Creá tu workspace** - Al registrarte, se crea tu primer workspace automáticamente.
-2. **Configurá tu moneda de referencia** - Elegí la moneda en la que querés ver tus reportes.
-3. **Agregá tus cuentas** - Creá una cuenta por cada cuenta bancaria, billetera o efectivo que tengas.
-4. **Creá tus categorías** - Definí las categorías que usás para clasificar tus gastos e ingresos.
-5. **Empezá a registrar** - Cada vez que entra o sale dinero, registralo.
+1. **Create your workspace** - When you register, your first workspace is created automatically.
+2. **Set your reference currency** - Choose the currency in which you want to see your reports.
+3. **Add your accounts** - Create an account for each bank account, wallet, or cash you have.
+4. **Create your categories** - Define the categories you use to classify your expenses and income.
+5. **Start recording** - Every time money comes in or goes out, record it.
 
-¿Listo para empezar? Continuá con [Conceptos básicos](/docs/conceptos/).
+Ready to start? Continue with [Basic concepts](/en/docs/concepts/).

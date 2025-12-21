@@ -1,5 +1,5 @@
 @php
-    $lang = $page->language ?? 'es';
+    $lang = $page->language ?? 'en';
     $t = $page->translations[$lang];
 @endphp
 
@@ -53,7 +53,7 @@
 
                 <!-- Error message -->
                 <p id="error-message" class="mt-4 text-sm text-primary-600 hidden">
-                    Error al enviar. Por favor intenta de nuevo.
+                    {{ $t['waitlist']['error'] }}
                 </p>
 
                 <!-- Privacy note -->

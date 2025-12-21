@@ -1,9 +1,9 @@
 @php
-    $lang = $page->language ?? 'es';
+    $lang = $page->language ?? 'en';
     $t = $page->translations[$lang];
-    $otherLang = $lang === 'es' ? 'en' : 'es';
-    $otherLangUrl = $lang === 'es' ? '/en/' : '/';
-    $otherLangName = $lang === 'es' ? 'English' : 'Español';
+    $otherLang = $lang === 'en' ? 'es' : 'en';
+    $otherLangUrl = $lang === 'en' ? '/es/' : '/';
+    $otherLangName = $lang === 'en' ? 'Español' : 'English';
 @endphp
 
 <footer class="bg-gray-50 border-t border-gray-100">
@@ -11,7 +11,7 @@
         <div class="flex flex-col items-center gap-8 md:flex-row md:justify-between">
             <!-- Logo and tagline -->
             <div class="flex flex-col items-center md:items-start gap-2">
-                <a href="{{ $lang === 'es' ? '/' : '/en/' }}" class="flex items-center gap-2">
+                <a href="{{ $lang === 'en' ? '/' : '/es/' }}" class="flex items-center gap-2">
                     <img src="/assets/images/logo.svg" alt="Finerdy" class="h-8 w-auto">
                     <span class="text-lg font-bold text-gray-900">{{ $page->siteName }}</span>
                 </a>

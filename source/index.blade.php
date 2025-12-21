@@ -1,5 +1,6 @@
 ---
-language: es
+language: en
+description: Unified personal accounting for those who earn and spend in multiple currencies
 ---
 
 @extends('_layouts.main')

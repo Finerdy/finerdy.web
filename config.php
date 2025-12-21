@@ -12,13 +12,13 @@ return [
 
     // Multi-language support
     'languages' => [
-        'es' => [
-            'name' => 'Español',
-            'url' => '/',
-        ],
         'en' => [
             'name' => 'English',
-            'url' => '/en/',
+            'url' => '/',
+        ],
+        'es' => [
+            'name' => 'Español',
+            'url' => '/es/',
         ],
     ],
 
@@ -79,6 +79,7 @@ return [
                 'placeholder' => 'tu@email.com',
                 'button' => 'Solicitar invitación',
                 'success' => '¡Gracias! Te contactaremos pronto.',
+                'error' => 'Error al enviar. Por favor intenta de nuevo.',
                 'privacy' => 'No spam. Solo te escribimos cuando haya novedades.',
             ],
             'footer' => [
@@ -141,6 +142,7 @@ return [
                 'placeholder' => 'you@email.com',
                 'button' => 'Request invitation',
                 'success' => 'Thanks! We\'ll be in touch soon.',
+                'error' => 'Error submitting. Please try again.',
                 'privacy' => 'No spam. We only write when there\'s news.',
             ],
             'footer' => [

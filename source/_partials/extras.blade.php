@@ -1,5 +1,5 @@
 @php
-    $lang = $page->language ?? 'es';
+    $lang = $page->language ?? 'en';
     $t = $page->translations[$lang];
 
     $icons = [

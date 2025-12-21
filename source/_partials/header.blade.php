@@ -1,9 +1,9 @@
 @php
-    $lang = $page->language ?? 'es';
+    $lang = $page->language ?? 'en';
     $t = $page->translations[$lang];
-    $otherLang = $lang === 'es' ? 'en' : 'es';
-    $otherLangUrl = $lang === 'es' ? '/en/' : '/';
-    $otherLangName = $lang === 'es' ? 'EN' : 'ES';
+    $otherLang = $lang === 'en' ? 'es' : 'en';
+    $otherLangUrl = $lang === 'en' ? '/es/' : '/';
+    $otherLangName = $lang === 'en' ? 'ES' : 'EN';
 @endphp
 
 <header class="bg-white border-b border-gray-100">
@@ -11,7 +11,7 @@
         <div class="flex h-16 items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center">
-                <a href="{{ $lang === 'es' ? '/' : '/en/' }}" class="flex items-center gap-2">
+                <a href="{{ $lang === 'en' ? '/' : '/es/' }}" class="flex items-center gap-2">
                     <img src="/assets/images/logo.svg" alt="Finerdy" class="h-8 w-auto">
                     <span class="text-xl font-bold text-gray-900">{{ $page->siteName }}</span>
                 </a>
@@ -22,7 +22,7 @@
                 <a href="#features" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
                     {{ $t['nav']['features'] }}
                 </a>
-                <a href="{{ $lang === 'es' ? '/docs/' : '/en/docs/' }}" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                <a href="{{ $lang === 'en' ? '/docs/' : '/es/docs/' }}" class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
                     {{ $t['nav']['docs'] }}
                 </a>
                 <a href="#waitlist" class="rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-700 transition-colors">
@@ -55,14 +55,14 @@
                 <a href="#features" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-900">
                     {{ $t['nav']['features'] }}
                 </a>
-                <a href="{{ $lang === 'es' ? '/docs/' : '/en/docs/' }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-900">
+                <a href="{{ $lang === 'en' ? '/docs/' : '/es/docs/' }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-900">
                     {{ $t['nav']['docs'] }}
                 </a>
                 <a href="#waitlist" class="block rounded-md px-3 py-2 text-base font-medium text-primary-600 hover:bg-primary-50">
                     {{ $t['nav']['waitlist'] }}
                 </a>
                 <a href="{{ $otherLangUrl }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-900">
-                    {{ $otherLangName === 'EN' ? 'English' : 'Español' }}
+                    {{ $otherLangName === 'ES' ? 'Español' : 'English' }}
                 </a>
             </div>
         </div>

@@ -1,214 +1,214 @@
 ---
 extends: _layouts.docs
 section: content
-language: es
+language: en
 title: Workspaces
-description: Workspaces en Finerdy - Espacios separados para diferentes contextos financieros
+description: Workspaces in Finerdy - Separate spaces for different financial contexts
 ---
 
 # Workspaces
 
-Los workspaces te permiten separar tus finanzas en diferentes contextos. Podés tener uno para tus gastos personales, otro para los gastos familiares, y otro para tu negocio.
+Workspaces let you separate your finances into different contexts. You can have one for your personal expenses, another for family expenses, and another for your business.
 
-## ¿Qué es un workspace?
+## What is a workspace?
 
-Un **workspace** es un espacio aislado con sus propias:
+A **workspace** is an isolated space with its own:
 
-- Cuentas
-- Categorías
-- Transacciones
-- Presupuestos
-- Moneda de referencia
+- Accounts
+- Categories
+- Transactions
+- Budgets
+- Reference currency
 
-Cada workspace es independiente. Lo que registrás en uno no afecta a los otros.
+Each workspace is independent. What you record in one doesn't affect the others.
 
 ---
 
-## ¿Para qué usar varios workspaces?
+## Why use multiple workspaces?
 
-### Finanzas personales vs familiares
+### Personal vs family finances
 
 ```
 Workspace: Personal
-  - Cuenta: Banco personal
-  - Categorías: Gimnasio, Hobbies, Salidas
-  - Moneda referencia: USD
+  - Account: Personal bank
+  - Categories: Gym, Hobbies, Going out
+  - Reference currency: USD
 
-Workspace: Familia
-  - Cuenta: Cuenta conjunta
-  - Categorías: Supermercado, Colegio, Casa
-  - Moneda referencia: USD
+Workspace: Family
+  - Account: Joint account
+  - Categories: Groceries, School, Home
+  - Reference currency: USD
 ```
 
-### Negocio independiente
+### Independent business
 
 ```
 Workspace: Freelance
-  - Cuenta: Wise (USD)
-  - Cuenta: PayPal (USD)
-  - Categorías: Ingresos clientes, Software, Impuestos
-  - Moneda referencia: USD
+  - Account: Wise (USD)
+  - Account: PayPal (USD)
+  - Categories: Client income, Software, Taxes
+  - Reference currency: USD
 ```
 
-### Diferentes monedas base
+### Different base currencies
 
 ```
 Workspace: Argentina
-  - Moneda referencia: ARS
-  - Reportes en pesos
+  - Reference currency: ARS
+  - Reports in pesos
 
-Workspace: Internacional
-  - Moneda referencia: USD
-  - Reportes en dólares
+Workspace: International
+  - Reference currency: USD
+  - Reports in dollars
 ```
 
 ---
 
-## Crear un workspace
+## Creating a workspace
 
-Al crear un workspace definís:
+When creating a workspace you define:
 
-| Campo | Descripción |
+| Field | Description |
 |-------|-------------|
-| **Nombre** | Identificador (ej: "Personal", "Familia") |
-| **Moneda de referencia** | La moneda para tus reportes |
+| **Name** | Identifier (e.g., "Personal", "Family") |
+| **Reference currency** | The currency for your reports |
 
-### Importante sobre la moneda
+### Important about currency
 
-La moneda de referencia **no se puede cambiar** después de crear el workspace. Elegí bien desde el inicio.
-
----
-
-## Colaboración
-
-Los workspaces permiten **compartir finanzas** con otras personas.
-
-### Roles disponibles
-
-| Rol | Permisos |
-|-----|----------|
-| **Owner** | Control total. Puede invitar, editar configuración, eliminar |
-| **Member** | Puede crear y editar transacciones, cuentas, categorías |
-| **Viewer** | Solo puede ver. No puede modificar nada |
-
-### Casos de uso
-
-**Pareja compartiendo gastos:**
-- Ambos como **Member**
-- Cada uno registra sus gastos
-- Ambos ven los reportes
-
-**Contador revisando:**
-- Cliente como **Owner**
-- Contador como **Viewer**
-- Ve los reportes sin poder modificar
+The reference currency **cannot be changed** after creating the workspace. Choose wisely from the start.
 
 ---
 
-## Invitar usuarios
+## Collaboration
 
-Para invitar a alguien a tu workspace:
+Workspaces allow you to **share finances** with other people.
 
-1. Andá a la configuración del workspace
-2. Ingresá el email de la persona
-3. Elegí el rol (Member o Viewer)
-4. La persona recibe una invitación
+### Available roles
 
-### Importante
+| Role | Permissions |
+|------|-------------|
+| **Owner** | Full control. Can invite, edit settings, delete |
+| **Member** | Can create and edit transactions, accounts, categories |
+| **Viewer** | Can only view. Cannot modify anything |
 
-- Solo el **Owner** puede invitar usuarios
-- El invitado necesita crear una cuenta si no tiene una
-- Podés cambiar el rol o remover usuarios después
+### Use cases
+
+**Couple sharing expenses:**
+- Both as **Member**
+- Each records their expenses
+- Both see the reports
+
+**Accountant reviewing:**
+- Client as **Owner**
+- Accountant as **Viewer**
+- Views reports without being able to modify
 
 ---
 
-## Cambiar entre workspaces
+## Inviting users
 
-Podés cambiar de workspace en cualquier momento desde el menú de la aplicación.
+To invite someone to your workspace:
+
+1. Go to workspace settings
+2. Enter the person's email
+3. Choose the role (Member or Viewer)
+4. The person receives an invitation
+
+### Important
+
+- Only the **Owner** can invite users
+- The invitee needs to create an account if they don't have one
+- You can change roles or remove users later
+
+---
+
+## Switching between workspaces
+
+You can switch workspaces at any time from the app menu.
 
 ```
-┌─ Workspace actual ─────────────┐
+┌─ Current workspace ────────────┐
 │ 👤 Personal           ✓       │
-│ 👥 Familia                    │
+│ 👥 Family                     │
 │ 💼 Freelance                  │
 └────────────────────────────────┘
 ```
 
-Cada vez que cambiás, ves las cuentas, categorías y transacciones de ese workspace.
+Each time you switch, you see that workspace's accounts, categories, and transactions.
 
 ---
 
-## Aislamiento de datos
+## Data isolation
 
-Los datos de cada workspace están **completamente aislados**:
+Data in each workspace is **completely isolated**:
 
-| Elemento | ¿Compartido entre workspaces? |
-|----------|------------------------------|
-| Cuentas | No |
-| Categorías | No |
-| Transacciones | No |
-| Presupuestos | No |
-| Reportes | No |
-| Tipos de cambio | Sí (son globales) |
+| Element | Shared between workspaces? |
+|---------|---------------------------|
+| Accounts | No |
+| Categories | No |
+| Transactions | No |
+| Budgets | No |
+| Reports | No |
+| Exchange rates | Yes (they're global) |
 
-### ¿Por qué importa?
+### Why does it matter?
 
-- Una cuenta "Banco Santander" en el workspace Personal es diferente a una en Familia
-- Podés tener categorías con el mismo nombre pero diferentes en cada workspace
-- Los reportes solo muestran datos del workspace activo
-
----
-
-## Workspace por defecto
-
-Al registrarte, Finerdy crea automáticamente tu primer workspace. Este es tu **workspace por defecto**.
-
-Podés:
-- Renombrarlo
-- Crear otros workspaces
-- Seguir usando solo uno si no necesitás separar contextos
+- A "Chase Bank" account in the Personal workspace is different from one in Family
+- You can have categories with the same name but different in each workspace
+- Reports only show data from the active workspace
 
 ---
 
-## Eliminar un workspace
+## Default workspace
 
-Solo el **Owner** puede eliminar un workspace.
+When you register, Finerdy automatically creates your first workspace. This is your **default workspace**.
 
-**Advertencia**: Eliminar un workspace borra **permanentemente**:
-- Todas las cuentas
-- Todas las transacciones
-- Todas las categorías
-- Todos los presupuestos
-- Todos los accesos de colaboradores
-
-Esta acción no se puede deshacer.
+You can:
+- Rename it
+- Create other workspaces
+- Keep using just one if you don't need to separate contexts
 
 ---
 
-## Consejos para workspaces
+## Deleting a workspace
 
-1. **Empezá con uno**: No crees múltiples workspaces hasta que realmente lo necesites.
+Only the **Owner** can delete a workspace.
 
-2. **Pensá en la moneda**: ¿En qué moneda querés ver tus reportes? Eso define el workspace.
+**Warning**: Deleting a workspace **permanently** deletes:
+- All accounts
+- All transactions
+- All categories
+- All budgets
+- All collaborator access
 
-3. **Separación clara**: Si mezclás personal con negocio, considerá separarlos.
-
-4. **Invitá con cuidado**: Un **Member** puede modificar todo. Usá **Viewer** si solo necesitás que vean.
-
-5. **No dupliques**: Si una cuenta la usás solo personalmente, no la crees en el workspace familiar.
-
----
-
-## Resumen
-
-| Concepto | Descripción |
-|----------|-------------|
-| **Workspace** | Espacio aislado con sus propios datos |
-| **Moneda de referencia** | Se define al crear, no se puede cambiar |
-| **Owner** | Dueño con control total |
-| **Member** | Puede ver y modificar |
-| **Viewer** | Solo puede ver |
+This action cannot be undone.
 
 ---
 
-¡Eso es todo! Ya sabés cómo funciona Finerdy. Empezá a registrar tus transacciones y tomá el control de tus finanzas.
+## Workspace tips
+
+1. **Start with one**: Don't create multiple workspaces until you really need to.
+
+2. **Think about currency**: What currency do you want to see your reports in? That defines the workspace.
+
+3. **Clear separation**: If you mix personal with business, consider separating them.
+
+4. **Invite carefully**: A **Member** can modify everything. Use **Viewer** if they only need to see.
+
+5. **Don't duplicate**: If you only use an account personally, don't create it in the family workspace.
+
+---
+
+## Summary
+
+| Concept | Description |
+|---------|-------------|
+| **Workspace** | Isolated space with its own data |
+| **Reference currency** | Defined at creation, cannot be changed |
+| **Owner** | Owner with full control |
+| **Member** | Can view and modify |
+| **Viewer** | Can only view |
+
+---
+
+That's it! You now know how Finerdy works. Start recording your transactions and take control of your finances.
