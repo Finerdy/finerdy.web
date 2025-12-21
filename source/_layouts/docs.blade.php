@@ -1,10 +1,21 @@
+@php
+    $lang = $page->language ?? 'en';
+    $defaultDescription = $lang === 'en' ? 'Finerdy Documentation' : 'Documentación de Finerdy';
+    $description = $page->description ?? $defaultDescription;
+
+    // Hreflang: map current doc path to alternate language
+    $currentPath = $page->getPath();
+    $altLangUrl = $lang === 'en'
+        ? $page->baseUrl . '/es' . str_replace('/docs', '/docs', $currentPath)
+        : $page->baseUrl . str_replace('/es/docs', '/docs', $currentPath);
+@endphp
 <!DOCTYPE html>
-<html lang="{{ $page->language ?? 'en' }}">
+<html lang="{{ $lang }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="canonical" href="{{ $page->getUrl() }}">
-        <meta name="description" content="{{ $page->description ?? 'Documentación de Finerdy' }}">
+        <meta name="description" content="{{ $description }}">
 
         <title>{{ $page->title }} | Docs | {{ $page->siteName }}</title>
 
@@ -12,13 +23,32 @@
         <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
+        <!-- Hreflang -->
+        <link rel="alternate" hreflang="en" href="{{ $lang === 'en' ? $page->getUrl() : $altLangUrl }}">
+        <link rel="alternate" hreflang="es" href="{{ $lang === 'es' ? $page->getUrl() : $altLangUrl }}">
+        <link rel="alternate" hreflang="x-default" href="{{ $page->baseUrl }}/docs/">
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="{{ $page->title }} | Docs | {{ $page->siteName }}">
+        <meta property="og:description" content="{{ $description }}">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="{{ $page->getUrl() }}">
+        <meta property="og:image" content="{{ $page->baseUrl }}/assets/images/og-image.png">
+        <meta property="og:locale" content="{{ $lang === 'en' ? 'en_US' : 'es_ES' }}">
+        <meta property="og:site_name" content="{{ $page->siteName }}">
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="{{ $page->title }} | Docs | {{ $page->siteName }}">
+        <meta name="twitter:description" content="{{ $description }}">
+        <meta name="twitter:image" content="{{ $page->baseUrl }}/assets/images/og-image.png">
+
         @viteRefresh()
         <link rel="stylesheet" href="{{ vite('source/_assets/css/main.css') }}">
         <script defer type="module" src="{{ vite('source/_assets/js/main.js') }}"></script>
     </head>
     <body class="bg-white text-gray-900 antialiased">
         @php
-            $lang = $page->language ?? 'en';
             $docsBase = $lang === 'en' ? '/docs' : '/es/docs';
             $homeUrl = $lang === 'en' ? '/' : '/es/';
             $otherLangUrl = $lang === 'en' ? '/es/docs/' : '/docs/';
