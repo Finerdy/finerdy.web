@@ -247,8 +247,46 @@ All transactions have these fields:
 |-------|-------------|
 | **Date** | When the transaction occurred |
 | **Description** | Free text for details |
+| **Tags** | Custom labels to organize your transactions |
 | **Attachments** | You can attach receipts (images, PDFs) |
 | **Created by** | User who recorded the transaction |
+
+---
+
+## Tags
+
+**Tags** allow you to organize and filter your transactions with custom labels.
+
+### How to use them
+
+- Type the tag name in the tags field
+- Finerdy suggests existing tags as you type
+- If the tag doesn't exist, it's created automatically
+- You can add multiple tags to a transaction
+
+### Usage examples
+
+- `vacation` - For expenses from a specific trip
+- `work` - To separate work expenses from personal ones
+- `pending` - To mark transactions that need review
+- `monthly` - For recurring expenses
+- `home-project` - For expenses from a specific project
+
+### Filter by tags
+
+In the transactions list, you can filter by one or more tags to see only transactions that contain them.
+
+### Example
+
+```
+Type: Expense
+Account: Credit Card (USD)
+Amount: 500.00 USD
+Category: Travel
+Description: Miami hotel
+Tags: vacation, miami-2025
+Date: 2025-03-15
+```
 
 ---
 

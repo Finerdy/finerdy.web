@@ -247,8 +247,46 @@ Todas las transacciones tienen estos campos:
 |-------|-------------|
 | **Fecha** | Cuándo ocurrió la transacción |
 | **Descripción** | Texto libre para detalles |
+| **Tags** | Etiquetas personalizadas para organizar tus transacciones |
 | **Adjuntos** | Podés adjuntar comprobantes (imágenes, PDFs) |
 | **Creado por** | Usuario que registró la transacción |
+
+---
+
+## Tags
+
+Los **tags** te permiten organizar y filtrar tus transacciones con etiquetas personalizadas.
+
+### Cómo usarlos
+
+- Escribí el nombre del tag en el campo de tags
+- Finerdy te sugiere tags existentes mientras escribís
+- Si el tag no existe, se crea automáticamente
+- Podés agregar múltiples tags a una transacción
+
+### Ejemplos de uso
+
+- `vacaciones` - Para gastos de un viaje específico
+- `trabajo` - Para separar gastos laborales de personales
+- `pendiente` - Para marcar transacciones que necesitan revisión
+- `mensual` - Para gastos recurrentes
+- `proyecto-casa` - Para gastos de un proyecto específico
+
+### Filtrar por tags
+
+En la lista de transacciones, podés filtrar por uno o más tags para ver solo las transacciones que los contienen.
+
+### Ejemplo
+
+```
+Tipo: Gasto
+Cuenta: Tarjeta de crédito (USD)
+Monto: 500.00 USD
+Categoría: Viajes
+Descripción: Hotel en Miami
+Tags: vacaciones, miami-2025
+Fecha: 2025-03-15
+```
 
 ---
 
