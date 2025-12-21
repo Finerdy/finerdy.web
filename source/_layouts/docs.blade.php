@@ -66,9 +66,20 @@
             </nav>
         </header>
 
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="flex gap-8 py-8">
-                <!-- Sidebar -->
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+            <!-- Mobile nav -->
+            <div class="lg:hidden mb-6">
+                <select onchange="window.location.href=this.value" class="w-full rounded-lg border-gray-300 text-sm py-2">
+                    @foreach($navItems as $item)
+                        <option value="{{ $item['url'] }}" {{ rtrim($page->getPath(), '/') === rtrim($item['url'], '/') ? 'selected' : '' }}>
+                            {{ $item['title'] }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="lg:flex lg:gap-8">
+                <!-- Sidebar (desktop only) -->
                 <aside class="hidden lg:block w-64 flex-shrink-0">
                     <nav class="sticky top-24 space-y-1">
                         @foreach($navItems as $item)
@@ -80,7 +91,7 @@
                                class="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors {{ $isActive ? 'bg-primary-50 text-primary-700' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' }}">
                                 {{ $item['title'] }}
                                 @if($item['external'] ?? false)
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="12" height="12" class="w-3 h-3 flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="14" height="14" class="w-3.5 h-3.5 flex-shrink-0">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                                     </svg>
                                 @endif
@@ -88,17 +99,6 @@
                         @endforeach
                     </nav>
                 </aside>
-
-                <!-- Mobile nav -->
-                <div class="lg:hidden w-full mb-6">
-                    <select onchange="window.location.href=this.value" class="w-full rounded-lg border-gray-300 text-sm">
-                        @foreach($navItems as $item)
-                            <option value="{{ $item['url'] }}" {{ rtrim($page->getPath(), '/') === rtrim($item['url'], '/') ? 'selected' : '' }}>
-                                {{ $item['title'] }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
 
                 <!-- Content -->
                 <main class="flex-1 min-w-0">
