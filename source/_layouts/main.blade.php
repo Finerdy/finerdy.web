@@ -45,6 +45,15 @@
         <link rel="stylesheet" href="{{ vite('source/_assets/css/main.css') }}">
         <script defer type="module" src="{{ vite('source/_assets/js/main.js') }}"></script>
 
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PYXV6Y0ZJ"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4PYXV6Y0ZJ');
+        </script>
+
         <!-- Structured Data -->
         <script type="application/ld+json">
         {"@@context":"https://schema.org","@@type":"WebSite","name":"{{ $page->siteName }}","url":"{{ $page->baseUrl }}/","description":"{{ $page->siteDescriptionEn }}","inLanguage":["en","es"]}

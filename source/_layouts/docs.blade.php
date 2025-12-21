@@ -43,6 +43,15 @@
         <meta name="twitter:description" content="{{ $description }}">
         <meta name="twitter:image" content="{{ $page->baseUrl }}/assets/images/og-image.png">
 
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PYXV6Y0ZJ"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4PYXV6Y0ZJ');
+        </script>
+
         @viteRefresh()
         <link rel="stylesheet" href="{{ vite('source/_assets/css/main.css') }}">
         <script defer type="module" src="{{ vite('source/_assets/js/main.js') }}"></script>
