@@ -153,6 +153,79 @@ Budgets are **informational**, they don't block transactions.
 
 ---
 
+## Changing a Budget's Category
+
+When you change the category of a budget, you need to decide what happens to the transactions already linked to that budget.
+
+### Category Synchronization Options
+
+Finerdy gives you **three options** when changing a budget's category:
+
+| Option | What happens | When to use |
+|--------|-------------|-------------|
+| **No sync (none)** | Only the budget category changes, transactions keep their original categories | When you want to reorganize budgets without affecting historical data |
+| **Future only (future)** | Only transactions dated today or later will update to the new category | When you want past data unchanged but future expenses to use the new category |
+| **All transactions (all)** | All transactions linked to this budget update to the new category | When you're fixing a categorization mistake or consolidating categories |
+
+### How it works
+
+1. Go to the budget you want to edit
+2. Change the **Category** field
+3. A modal appears asking: **"Do you want to update the category for linked transactions?"**
+4. Choose one of the three options:
+   - **No sync**: Keep transactions as they are
+   - **Future only**: Update only transactions from today forward
+   - **All transactions**: Update all linked transactions
+5. Save
+
+@component('_partials.callout', ['type' => 'info', 'title' => 'Example'])
+You have a "Monthly Groceries" budget linked to the "Food" category with 50 transactions. You decide to change it to "Groceries" category.
+
+- **No sync**: Budget uses "Groceries", but those 50 transactions still show as "Food"
+- **Future only**: Budget uses "Groceries", past transactions stay "Food", new ones will be "Groceries"
+- **All transactions**: Budget and all 50 transactions now use "Groceries"
+@endcomponent
+
+### When to use each option
+
+**No sync (none):**
+- You're reorganizing budgets for the future but don't want to change reports
+- The old category still makes sense for historical data
+
+**Future only (future):**
+- You're changing your budget structure mid-period
+- You want clean historical reports but a new organization going forward
+
+**All transactions (all):**
+- You made a mistake and assigned expenses to the wrong category
+- You're consolidating duplicate categories
+- You want all budget-related expenses to show under the same category in reports
+
+@component('_partials.callout', ['type' => 'warning', 'title' => 'Important'])
+Changing transaction categories affects your reports. If you use "All transactions," your historical category totals will change retroactively.
+@endcomponent
+
+---
+
+## API Example: Changing Category with Sync
+
+```http
+PUT /budgets/{id}
+Content-Type: application/json
+
+{
+  "category_id": 456,
+  "sync_transactions": "all"
+}
+```
+
+**Sync options:**
+- `"none"` - No synchronization
+- `"future"` - Sync transactions from today forward
+- `"all"` - Sync all linked transactions
+
+---
+
 ## Archiving budgets
 
 You can **archive** a budget you no longer use:

@@ -153,6 +153,79 @@ Los presupuestos son **informativos**, no bloquean transacciones.
 
 ---
 
+## Cambiar la Categoría de un Presupuesto
+
+Cuando cambiás la categoría de un presupuesto, necesitás decidir qué pasa con las transacciones ya vinculadas a ese presupuesto.
+
+### Opciones de Sincronización de Categoría
+
+Finerdy te da **tres opciones** cuando cambiás la categoría de un presupuesto:
+
+| Opción | Qué pasa | Cuándo usarla |
+|--------|----------|---------------|
+| **Sin sincronizar (none)** | Solo cambia la categoría del presupuesto, las transacciones mantienen sus categorías originales | Cuando querés reorganizar presupuestos sin afectar datos históricos |
+| **Solo futuras (future)** | Solo las transacciones con fecha de hoy o posterior actualizarán su categoría | Cuando querés que los datos pasados no cambien pero los gastos futuros usen la nueva categoría |
+| **Todas las transacciones (all)** | Todas las transacciones vinculadas a este presupuesto se actualizan a la nueva categoría | Cuando estás corrigiendo un error de categorización o consolidando categorías |
+
+### Cómo funciona
+
+1. Andá al presupuesto que querés editar
+2. Cambiá el campo **Categoría**
+3. Aparece un modal preguntando: **"¿Querés actualizar la categoría de las transacciones vinculadas?"**
+4. Elegí una de las tres opciones:
+   - **Sin sincronizar**: Mantené las transacciones como están
+   - **Solo futuras**: Actualizá solo las transacciones de hoy en adelante
+   - **Todas las transacciones**: Actualizá todas las transacciones vinculadas
+5. Guardá
+
+@component('_partials.callout', ['type' => 'info', 'title' => 'Ejemplo'])
+Tenés un presupuesto "Supermercado mensual" vinculado a la categoría "Comida" con 50 transacciones. Decidís cambiarlo a la categoría "Supermercado".
+
+- **Sin sincronizar**: El presupuesto usa "Supermercado", pero esas 50 transacciones siguen mostrándose como "Comida"
+- **Solo futuras**: El presupuesto usa "Supermercado", las transacciones pasadas quedan como "Comida", las nuevas serán "Supermercado"
+- **Todas las transacciones**: El presupuesto y las 50 transacciones ahora usan "Supermercado"
+@endcomponent
+
+### Cuándo usar cada opción
+
+**Sin sincronizar (none):**
+- Estás reorganizando presupuestos para el futuro pero no querés cambiar los reportes
+- La categoría vieja todavía tiene sentido para los datos históricos
+
+**Solo futuras (future):**
+- Estás cambiando tu estructura de presupuestos a mitad de período
+- Querés reportes históricos limpios pero una nueva organización hacia adelante
+
+**Todas las transacciones (all):**
+- Cometiste un error y asignaste gastos a la categoría incorrecta
+- Estás consolidando categorías duplicadas
+- Querés que todos los gastos relacionados con el presupuesto se muestren bajo la misma categoría en los reportes
+
+@component('_partials.callout', ['type' => 'warning', 'title' => 'Importante'])
+Cambiar las categorías de transacciones afecta tus reportes. Si usás "Todas las transacciones," los totales históricos por categoría cambiarán retroactivamente.
+@endcomponent
+
+---
+
+## Ejemplo de API: Cambiar Categoría con Sincronización
+
+```http
+PUT /budgets/{id}
+Content-Type: application/json
+
+{
+  "category_id": 456,
+  "sync_transactions": "all"
+}
+```
+
+**Opciones de sincronización:**
+- `"none"` - Sin sincronización
+- `"future"` - Sincronizar transacciones de hoy en adelante
+- `"all"` - Sincronizar todas las transacciones vinculadas
+
+---
+
 ## Archivar presupuestos
 
 Podés **archivar** un presupuesto que ya no usás:
