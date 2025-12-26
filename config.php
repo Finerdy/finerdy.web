@@ -3,6 +3,7 @@
 return [
     'production' => false,
     'baseUrl' => '',
+    'trailing_slash' => true,
     'siteName' => 'Finerdy',
     'siteDescription' => 'Contabilidad personal unificada para quienes cobran y gastan en múltiples monedas',
     'siteDescriptionEn' => 'Unified personal accounting for those who earn and spend in multiple currencies',
