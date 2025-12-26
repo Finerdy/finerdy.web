@@ -11,18 +11,16 @@ class GenerateSitemap
         '/assets',
         '/CNAME',
         '/favicon.ico',
+        '/robots',
     ];
 
     public function handle(Jigsaw $jigsaw)
     {
-        $baseUrl = rtrim($jigsaw->getConfig('baseUrl'), '/');
         $sitemap = new Sitemap($jigsaw->getDestinationPath() . '/sitemap.xml');
 
-        collect($jigsaw->getOutputPaths())->each(function ($path) use ($baseUrl, $sitemap) {
+        $jigsaw->getPages()->each(function ($page, $path) use ($sitemap) {
             if (!$this->shouldExclude($path)) {
-                $normalizedPath = str_starts_with($path, '/') ? $path : '/' . $path;
-                $url = $normalizedPath === '/' ? $baseUrl : $baseUrl . $normalizedPath;
-                $sitemap->addItem($url, time(), Sitemap::WEEKLY);
+                $sitemap->addItem($page->getUrl(), time(), Sitemap::WEEKLY);
             }
         });
 
