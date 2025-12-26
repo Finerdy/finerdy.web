@@ -193,15 +193,6 @@ Gasto 3: 10,000 ARS (cuenta en pesos)
 Total del mes: 168 USD
 ```
 
-### Tipos de cambio
-
-Finerdy obtiene tipos de cambio de:
-
-- **Frankfurter** - Para monedas principales (EUR, GBP, etc.)
-- **DolarAPI** - Para el peso argentino (usa el tipo de cambio blue)
-
-Los tipos de cambio se actualizan automáticamente y se guardan para reportes históricos.
-
 ### ¿Puedo cambiar mi moneda de referencia?
 
 La moneda de referencia se define al crear el workspace y **no se puede cambiar** después. Esto es intencional: cambiarla requeriría recalcular todas las transacciones históricas con tipos de cambio que podrían no estar disponibles.

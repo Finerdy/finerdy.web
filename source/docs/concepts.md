@@ -193,15 +193,6 @@ Expense 3: 10,000 ARS (peso account)
 Month total: 168 USD
 ```
 
-### Exchange rates
-
-Finerdy gets exchange rates from:
-
-- **Frankfurter** - For major currencies (EUR, GBP, etc.)
-- **DolarAPI** - For the Argentine peso (uses the blue dollar rate)
-
-Exchange rates are automatically updated and saved for historical reports.
-
 ### Can I change my reference currency?
 
 The reference currency is defined when creating the workspace and **cannot be changed** afterward. This is intentional: changing it would require recalculating all historical transactions with exchange rates that might not be available.
