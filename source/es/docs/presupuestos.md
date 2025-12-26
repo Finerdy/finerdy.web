@@ -3,21 +3,22 @@ extends: _layouts.docs
 section: content
 language: es
 title: Presupuestos
-description: Presupuestos en Finerdy - Control de gastos por categoría y período
+description: Presupuestos en Finerdy - Control de gastos con filtros por categoría y tags
 ---
 
 # Presupuestos
 
-Los presupuestos te ayudan a controlar cuánto gastás en cada categoría. Definís un límite y Finerdy te muestra cuánto llevás gastado.
+Los presupuestos te ayudan a controlar cuánto gastás. Definís un límite y Finerdy te muestra cuánto llevás gastado basándose en los filtros que definas.
 
 ## ¿Qué es un presupuesto?
 
-Un **presupuesto** es un límite de gasto para una categoría específica durante un período de tiempo.
+Un **presupuesto** es un límite de gasto basado en filtros (categorías y/o tags) durante un período de tiempo.
 
 ### Ejemplo
 
 ```
 Presupuesto: Supermercado
+Filtros: Categorías [Comida, Supermercado] + Tags [#esencial]
 Monto: 500 USD
 Período: Mensual
 
@@ -35,46 +36,127 @@ Para crear un presupuesto necesitás definir:
 | Campo | Descripción |
 |-------|-------------|
 | **Nombre** | Identificador del presupuesto |
-| **Categoría** | La categoría de gasto a controlar |
+| **Descripción** | Explicación opcional de qué cubre el presupuesto |
+| **Filtros** | Categorías y/o tags que determinan qué gastos cuentan |
 | **Monto** | El límite máximo en tu moneda de referencia |
 | **Período** | Con qué frecuencia se reinicia |
 
 ---
 
+## Filtros del presupuesto
+
+Los filtros determinan qué gastos cuentan para tu presupuesto. Podés combinar categorías y tags para un seguimiento flexible.
+
+### Opciones de filtro
+
+| Filtro | Descripción |
+|--------|-------------|
+| **Categorías** | Una o más categorías de gasto |
+| **Tags** | Uno o más tags |
+| **Excluir transferencias** | Si excluir transacciones relacionadas con transferencias (por defecto: sí) |
+
+@component('_partials.callout', ['type' => 'info', 'title' => 'Requisito'])
+Se requiere al menos una categoría O un tag. Podés usar ambos juntos para un seguimiento más preciso.
+@endcomponent
+
+### Cómo funcionan los filtros
+
+Los filtros usan la siguiente lógica:
+
+- **Dentro de categorías**: OR - coincide con cualquiera de las categorías seleccionadas
+- **Dentro de tags**: OR - coincide con cualquiera de los tags seleccionados
+- **Entre categorías y tags**: AND - si ambos están definidos, el gasto debe coincidir con al menos una categoría Y tener al menos un tag
+
+```
+Presupuesto: Comida
+Filtros:
+  Categorías: [Supermercado, Restaurantes]
+  Tags: [] (vacío)
+
+Este presupuesto incluirá:
+- Cualquier gasto en la categoría "Supermercado" O "Restaurantes"
+```
+
+```
+Presupuesto: Gastos de proyecto
+Filtros:
+  Categorías: [Viajes, Software]
+  Tags: [#proyecto-alfa]
+
+Este presupuesto incluirá:
+- Gastos en categoría "Viajes" o "Software"
+  Y que tengan el tag #proyecto-alfa
+```
+
+@component('_partials.callout', ['type' => 'warning', 'title' => 'Importante'])
+Si querés lógica OR entre categorías y tags, creá presupuestos separados o usá solo un tipo de filtro.
+@endcomponent
+
+### Ejemplos de filtros
+
+**Presupuesto solo por categorías:**
+```
+Presupuesto: Entretenimiento
+Filtros:
+  Categorías: [Cine, Juegos, Streaming]
+  Tags: []
+```
+
+**Presupuesto solo por tags:**
+```
+Presupuesto: Gastos Proyecto Alfa
+Filtros:
+  Categorías: []
+  Tags: [#proyecto-alfa]
+```
+
+**Filtros combinados:**
+```
+Presupuesto: Esenciales mensuales
+Filtros:
+  Categorías: [Supermercado, Servicios, Transporte]
+  Tags: [#esencial, #recurrente]
+```
+
+---
+
 ## Períodos disponibles
 
-Finerdy soporta **5 tipos de períodos**:
+Finerdy soporta **6 tipos de períodos**:
 
 | Período | Descripción | Cuándo se reinicia |
 |---------|-------------|-------------------|
-| **Mensual** | Para gastos mensuales recurrentes | El 1° de cada mes |
-| **Quincenal** | Para quienes cobran cada 15 días | El 1° y el 16 de cada mes |
+| **Semanal** | Para gastos semanales | Cada 7 días desde la fecha ancla |
+| **Quincenal** | Para quienes cobran cada 2 semanas | Cada 14 días desde la fecha ancla |
+| **Bimensual** | Para seguimiento dos veces al mes | El 1° y el 16 de cada mes |
+| **Mensual** | Para gastos mensuales recurrentes | El mismo día cada mes |
 | **Trimestral** | Para gastos menos frecuentes | Cada 3 meses |
-| **Anual** | Para gastos anuales | El 1° de enero |
 | **Único** | Para gastos puntuales | Nunca (fechas fijas) |
 
 ### Período mensual
 
-El más común. Se reinicia automáticamente el primer día de cada mes.
+El más común. Usa la fecha ancla para determinar cuándo empieza el período.
 
 ```
 Presupuesto: Entretenimiento - 200 USD/mes
+Ancla: 15 de enero
 
-Enero: 0 → gastás → 150 USD → 1 Feb se reinicia → 0
-Febrero: 0 → gastás → 180 USD → 1 Mar se reinicia → 0
+Período 1: 15 Ene - 14 Feb
+Período 2: 15 Feb - 14 Mar
+Período 3: 15 Mar - 14 Abr
 ```
 
-### Período quincenal
+### Períodos semanal / quincenal
 
-Ideal si cobrás quincenalmente. Se divide en:
-- **Primera quincena**: Del 1 al 15
-- **Segunda quincena**: Del 16 al fin de mes
+Usan la fecha ancla como punto de inicio.
 
 ```
-Presupuesto: Gastos diarios - 300 USD/quincena
+Presupuesto: Gastos diarios - 300 USD/quincenal
+Ancla: 1 de enero
 
-1-15 Enero: máximo 300 USD
-16-31 Enero: máximo 300 USD (se reinicia)
+1-14 Ene: máximo 300 USD
+15-28 Ene: máximo 300 USD (se reinicia)
+29 Ene - 11 Feb: máximo 300 USD (se reinicia)
 ```
 
 ### Período único
@@ -92,28 +174,33 @@ Hasta: 31 Ene 2025
 
 ## Cómo se calcula el gasto
 
-El presupuesto suma todos los gastos que:
+El presupuesto suma automáticamente todos los gastos que:
 
-1. Pertenecen a la **categoría** del presupuesto
-2. Están **asignados específicamente** a ese presupuesto
+1. Coinciden con **cualquiera** de las categorías del filtro O tienen **cualquiera** de los tags del filtro
+2. Son de tipo **gasto**
 3. Ocurrieron dentro del **período actual**
+4. No son transferencias (si "excluir transferencias" está activado)
 
 ### Importante
 
-- Se usa el **monto de referencia** (en tu moneda base)
-- Solo cuenta gastos asignados al presupuesto
-- No suma automáticamente todos los gastos de la categoría
+- Se usa el **monto de referencia** (en la moneda base de tu workspace)
+- Los gastos se detectan automáticamente según los filtros
+- No necesitás asignar manualmente - si un gasto coincide con los filtros, cuenta
 
-### Asignar gastos a un presupuesto
+### Detección automática de gastos
 
-Cuando registrás un gasto, podés elegir a qué presupuesto asignarlo:
+A diferencia del sistema anterior, no necesitás asignar manualmente los gastos a presupuestos. Finerdy detecta automáticamente los gastos que coinciden:
 
 ```
-Nuevo gasto:
+Presupuesto: Supermercado
+Filtros: Categorías [Comida, Supermercado]
+
+Cuando registrás:
   Cuenta: Tarjeta de crédito
   Monto: 50 USD
-  Categoría: Supermercado
-  Presupuesto: [Supermercado mensual] ← opcional
+  Categoría: Comida  ← ¡Coincide con el filtro!
+
+Este gasto cuenta automáticamente para el presupuesto "Supermercado".
 ```
 
 ---
@@ -136,7 +223,7 @@ Supermercado                          ████████░░░░ 64%
 320 USD de 500 USD                    180 USD disponible
 
 Entretenimiento                       ██████████████ 110%
-220 USD de 200 USD                    ⚠️ Excedido por 20 USD
+220 USD de 200 USD                    Excedido por 20 USD
 ```
 
 ---
@@ -153,76 +240,48 @@ Los presupuestos son **informativos**, no bloquean transacciones.
 
 ---
 
-## Cambiar la Categoría de un Presupuesto
+## Editar filtros del presupuesto
 
-Cuando cambiás la categoría de un presupuesto, necesitás decidir qué pasa con las transacciones ya vinculadas a ese presupuesto.
+Cuando cambiás los filtros de un presupuesto:
 
-### Opciones de Sincronización de Categoría
-
-Finerdy te da **tres opciones** cuando cambiás la categoría de un presupuesto:
-
-| Opción | Qué pasa | Cuándo usarla |
-|--------|----------|---------------|
-| **Sin sincronizar (none)** | Solo cambia la categoría del presupuesto, las transacciones mantienen sus categorías originales | Cuando querés reorganizar presupuestos sin afectar datos históricos |
-| **Solo futuras (future)** | Solo las transacciones con fecha de hoy o posterior actualizarán su categoría | Cuando querés que los datos pasados no cambien pero los gastos futuros usen la nueva categoría |
-| **Todas las transacciones (all)** | Todas las transacciones vinculadas a este presupuesto se actualizan a la nueva categoría | Cuando estás corrigiendo un error de categorización o consolidando categorías |
-
-### Cómo funciona
-
-1. Andá al presupuesto que querés editar
-2. Cambiá el campo **Categoría**
-3. Aparece un modal preguntando: **"¿Querés actualizar la categoría de las transacciones vinculadas?"**
-4. Elegí una de las tres opciones:
-   - **Sin sincronizar**: Mantené las transacciones como están
-   - **Solo futuras**: Actualizá solo las transacciones de hoy en adelante
-   - **Todas las transacciones**: Actualizá todas las transacciones vinculadas
-5. Guardá
+- El gasto se **recalcula inmediatamente** basándose en los nuevos filtros
+- Todos los gastos que coinciden dentro del período actual se incluyen
+- No necesitás sincronización - es automático
 
 @component('_partials.callout', ['type' => 'info', 'title' => 'Ejemplo'])
-Tenés un presupuesto "Supermercado mensual" vinculado a la categoría "Comida" con 50 transacciones. Decidís cambiarlo a la categoría "Supermercado".
+Tenés un presupuesto "Supermercado mensual" con filtro [categoría Comida]. Muestra 500 USD gastados.
 
-- **Sin sincronizar**: El presupuesto usa "Supermercado", pero esas 50 transacciones siguen mostrándose como "Comida"
-- **Solo futuras**: El presupuesto usa "Supermercado", las transacciones pasadas quedan como "Comida", las nuevas serán "Supermercado"
-- **Todas las transacciones**: El presupuesto y las 50 transacciones ahora usan "Supermercado"
-@endcomponent
+Agregás [categoría Supermercado] a los filtros.
 
-### Cuándo usar cada opción
-
-**Sin sincronizar (none):**
-- Estás reorganizando presupuestos para el futuro pero no querés cambiar los reportes
-- La categoría vieja todavía tiene sentido para los datos históricos
-
-**Solo futuras (future):**
-- Estás cambiando tu estructura de presupuestos a mitad de período
-- Querés reportes históricos limpios pero una nueva organización hacia adelante
-
-**Todas las transacciones (all):**
-- Cometiste un error y asignaste gastos a la categoría incorrecta
-- Estás consolidando categorías duplicadas
-- Querés que todos los gastos relacionados con el presupuesto se muestren bajo la misma categoría en los reportes
-
-@component('_partials.callout', ['type' => 'warning', 'title' => 'Importante'])
-Cambiar las categorías de transacciones afecta tus reportes. Si usás "Todas las transacciones," los totales históricos por categoría cambiarán retroactivamente.
+El presupuesto recalcula inmediatamente y ahora muestra 650 USD gastados (incluyendo todos los gastos de Comida + Supermercado).
 @endcomponent
 
 ---
 
-## Ejemplo de API: Cambiar Categoría con Sincronización
+## Ejemplo de API: Crear un Presupuesto con Filtros
 
 ```http
-PUT /budgets/{id}
+POST /budgets
 Content-Type: application/json
 
 {
-  "category_id": 456,
-  "sync_transactions": "all"
+  "name": "Comida mensual",
+  "description": "Todos los gastos relacionados con comida",
+  "filters": {
+    "categories": [1, 2, 3],
+    "tags": [5, 8],
+    "exclude_transfers": true
+  },
+  "amount": 500,
+  "period": "monthly",
+  "anchor_date": "2025-01-15"
 }
 ```
 
-**Opciones de sincronización:**
-- `"none"` - Sin sincronización
-- `"future"` - Sincronizar transacciones de hoy en adelante
-- `"all"` - Sincronizar todas las transacciones vinculadas
+**Opciones de filtro:**
+- `categories` - Array de IDs de categorías (al menos uno requerido si no hay tags)
+- `tags` - Array de IDs de tags (al menos uno requerido si no hay categorías)
+- `exclude_transfers` - Booleano, por defecto `true`
 
 ---
 
@@ -240,18 +299,20 @@ Podés **archivar** un presupuesto que ya no usás:
 
 ## Consejos para presupuestos
 
-1. **Empezá simple**: Creá 3-5 presupuestos para tus gastos principales.
+1. **Usá filtros inteligentemente**: Combiná categorías y tags para un seguimiento preciso sin crear demasiados presupuestos.
 
-2. **Sé realista**: Basate en lo que realmente gastás, no en lo que "deberías" gastar.
+2. **Empezá simple**: Creá 3-5 presupuestos para tus gastos principales.
 
-3. **Revisá y ajustá**: Si siempre te excedés, quizás el límite es muy bajo.
+3. **Sé realista**: Basate en lo que realmente gastás, no en lo que "deberías" gastar.
 
-4. **Usá período único para metas**: Ahorro para vacaciones, compras grandes, etc.
+4. **Revisá y ajustá**: Si siempre te excedés, quizás el límite es muy bajo.
 
-5. **No todo necesita presupuesto**: Algunos gastos son fijos y no tiene sentido presupuestarlos.
+5. **Usá tags para proyectos**: Seguí gastos de proyectos a través de categorías con un solo presupuesto basado en tags.
+
+6. **Usá período único para metas**: Ahorro para vacaciones, compras grandes, etc.
 
 ---
 
 ## Próximos pasos
 
-Aprendé a organizar tus finanzas en diferentes contextos con [Workspaces](/docs/workspaces/).
+Aprendé a organizar tus finanzas en diferentes contextos con [Workspaces](/es/docs/workspaces/).

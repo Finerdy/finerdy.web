@@ -3,21 +3,22 @@ extends: _layouts.docs
 section: content
 language: en
 title: Budgets
-description: Budgets in Finerdy - Spending control by category and period
+description: Budgets in Finerdy - Spending control with filters by category and tags
 ---
 
 # Budgets
 
-Budgets help you control how much you spend in each category. Set a limit and Finerdy shows you how much you've spent.
+Budgets help you control how much you spend. Set a limit and Finerdy shows you how much you've spent based on your defined filters.
 
 ## What is a budget?
 
-A **budget** is a spending limit for a specific category over a period of time.
+A **budget** is a spending limit based on filters (categories and/or tags) over a period of time.
 
 ### Example
 
 ```
 Budget: Groceries
+Filters: Categories [Food, Supermarket] + Tags [#essential]
 Amount: 500 USD
 Period: Monthly
 
@@ -35,46 +36,127 @@ To create a budget you need to define:
 | Field | Description |
 |-------|-------------|
 | **Name** | Budget identifier |
-| **Category** | The expense category to control |
+| **Description** | Optional explanation of what the budget covers |
+| **Filters** | Categories and/or tags that determine which expenses count |
 | **Amount** | Maximum limit in your reference currency |
 | **Period** | How often it resets |
 
 ---
 
+## Budget filters
+
+Filters determine which expenses count toward your budget. You can combine categories and tags for flexible tracking.
+
+### Filter options
+
+| Filter | Description |
+|--------|-------------|
+| **Categories** | One or more expense categories |
+| **Tags** | One or more tags |
+| **Exclude transfers** | Whether to exclude transfer-related transactions (default: yes) |
+
+@component('_partials.callout', ['type' => 'info', 'title' => 'Requirement'])
+At least one category OR one tag is required. You can use both together for more precise tracking.
+@endcomponent
+
+### How filters work
+
+Filters use the following logic:
+
+- **Within categories**: OR - matches any of the selected categories
+- **Within tags**: OR - matches any of the selected tags
+- **Between categories and tags**: AND - if both are defined, the expense must match at least one category AND have at least one tag
+
+```
+Budget: Food & Dining
+Filters:
+  Categories: [Groceries, Restaurants]
+  Tags: [] (empty)
+
+This budget will include:
+- Any expense in "Groceries" OR "Restaurants" category
+```
+
+```
+Budget: Project expenses
+Filters:
+  Categories: [Travel, Software]
+  Tags: [#project-alpha]
+
+This budget will include:
+- Expenses in "Travel" or "Software" category
+  AND tagged with #project-alpha
+```
+
+@component('_partials.callout', ['type' => 'warning', 'title' => 'Important'])
+If you want OR logic between categories and tags, create separate budgets or use only one filter type.
+@endcomponent
+
+### Filter examples
+
+**Category-only budget:**
+```
+Budget: Entertainment
+Filters:
+  Categories: [Movies, Games, Streaming]
+  Tags: []
+```
+
+**Tag-only budget:**
+```
+Budget: Project Alpha expenses
+Filters:
+  Categories: []
+  Tags: [#project-alpha]
+```
+
+**Combined filters:**
+```
+Budget: Monthly essentials
+Filters:
+  Categories: [Groceries, Utilities, Transport]
+  Tags: [#essential, #recurring]
+```
+
+---
+
 ## Available periods
 
-Finerdy supports **5 types of periods**:
+Finerdy supports **6 types of periods**:
 
 | Period | Description | When it resets |
 |--------|-------------|----------------|
-| **Monthly** | For recurring monthly expenses | The 1st of each month |
-| **Biweekly** | For those who get paid every 15 days | The 1st and 16th of each month |
+| **Weekly** | For weekly expenses | Every 7 days from anchor date |
+| **Biweekly** | For those who get paid every 2 weeks | Every 14 days from anchor date |
+| **Semimonthly** | For twice-a-month tracking | The 1st and 16th of each month |
+| **Monthly** | For recurring monthly expenses | Same day each month |
 | **Quarterly** | For less frequent expenses | Every 3 months |
-| **Yearly** | For annual expenses | January 1st |
 | **Once** | For one-time expenses | Never (fixed dates) |
 
 ### Monthly period
 
-The most common. Automatically resets on the first day of each month.
+The most common. Uses the anchor date to determine when the period starts.
 
 ```
 Budget: Entertainment - 200 USD/month
+Anchor: January 15
 
-January: 0 → spend → 150 USD → Feb 1 resets → 0
-February: 0 → spend → 180 USD → Mar 1 resets → 0
+Period 1: Jan 15 - Feb 14
+Period 2: Feb 15 - Mar 14
+Period 3: Mar 15 - Apr 14
 ```
 
-### Biweekly period
+### Weekly / Biweekly periods
 
-Ideal if you get paid biweekly. Splits into:
-- **First half**: 1st to 15th
-- **Second half**: 16th to end of month
+Use the anchor date as the starting point.
 
 ```
 Budget: Daily expenses - 300 USD/biweekly
+Anchor: January 1
 
-Jan 1-15: maximum 300 USD
-Jan 16-31: maximum 300 USD (resets)
+Jan 1-14: maximum 300 USD
+Jan 15-28: maximum 300 USD (resets)
+Jan 29 - Feb 11: maximum 300 USD (resets)
 ```
 
 ### Once period
@@ -92,28 +174,33 @@ To: Jan 31, 2025
 
 ## How spending is calculated
 
-The budget sums all expenses that:
+The budget automatically sums all expenses that:
 
-1. Belong to the budget's **category**
-2. Are **specifically assigned** to that budget
+1. Match **any** of the budget's filter categories OR have **any** of the filter tags
+2. Are of type **expense**
 3. Occurred within the **current period**
+4. Are not transfers (if "exclude transfers" is enabled)
 
 ### Important
 
-- Uses the **reference amount** (in your base currency)
-- Only counts expenses assigned to the budget
-- Doesn't automatically sum all expenses in the category
+- Uses the **reference amount** (in your workspace's base currency)
+- Expenses are matched automatically based on filters
+- No manual assignment needed - if an expense matches the filters, it counts
 
-### Assigning expenses to a budget
+### Automatic expense matching
 
-When recording an expense, you can choose which budget to assign it to:
+Unlike the old system, you don't need to manually assign expenses to budgets. Finerdy automatically detects matching expenses:
 
 ```
-New expense:
+Budget: Groceries
+Filters: Categories [Food, Supermarket]
+
+When you record:
   Account: Credit Card
   Amount: 50 USD
-  Category: Groceries
-  Budget: [Monthly groceries] ← optional
+  Category: Food  ← Matches budget filter!
+
+This expense automatically counts toward "Groceries" budget.
 ```
 
 ---
@@ -136,7 +223,7 @@ Groceries                             ████████░░░░ 64%
 320 USD of 500 USD                    180 USD available
 
 Entertainment                         ██████████████ 110%
-220 USD of 200 USD                    ⚠️ Exceeded by 20 USD
+220 USD of 200 USD                    Exceeded by 20 USD
 ```
 
 ---
@@ -153,76 +240,48 @@ Budgets are **informational**, they don't block transactions.
 
 ---
 
-## Changing a Budget's Category
+## Editing budget filters
 
-When you change the category of a budget, you need to decide what happens to the transactions already linked to that budget.
+When you change a budget's filters:
 
-### Category Synchronization Options
-
-Finerdy gives you **three options** when changing a budget's category:
-
-| Option | What happens | When to use |
-|--------|-------------|-------------|
-| **No sync (none)** | Only the budget category changes, transactions keep their original categories | When you want to reorganize budgets without affecting historical data |
-| **Future only (future)** | Only transactions dated today or later will update to the new category | When you want past data unchanged but future expenses to use the new category |
-| **All transactions (all)** | All transactions linked to this budget update to the new category | When you're fixing a categorization mistake or consolidating categories |
-
-### How it works
-
-1. Go to the budget you want to edit
-2. Change the **Category** field
-3. A modal appears asking: **"Do you want to update the category for linked transactions?"**
-4. Choose one of the three options:
-   - **No sync**: Keep transactions as they are
-   - **Future only**: Update only transactions from today forward
-   - **All transactions**: Update all linked transactions
-5. Save
+- The spending is **recalculated immediately** based on the new filters
+- All matching expenses within the current period are included
+- No synchronization needed - it's automatic
 
 @component('_partials.callout', ['type' => 'info', 'title' => 'Example'])
-You have a "Monthly Groceries" budget linked to the "Food" category with 50 transactions. You decide to change it to "Groceries" category.
+You have a "Monthly Groceries" budget with filter [Food category]. It shows 500 USD spent.
 
-- **No sync**: Budget uses "Groceries", but those 50 transactions still show as "Food"
-- **Future only**: Budget uses "Groceries", past transactions stay "Food", new ones will be "Groceries"
-- **All transactions**: Budget and all 50 transactions now use "Groceries"
-@endcomponent
+You add [Supermarket category] to the filters.
 
-### When to use each option
-
-**No sync (none):**
-- You're reorganizing budgets for the future but don't want to change reports
-- The old category still makes sense for historical data
-
-**Future only (future):**
-- You're changing your budget structure mid-period
-- You want clean historical reports but a new organization going forward
-
-**All transactions (all):**
-- You made a mistake and assigned expenses to the wrong category
-- You're consolidating duplicate categories
-- You want all budget-related expenses to show under the same category in reports
-
-@component('_partials.callout', ['type' => 'warning', 'title' => 'Important'])
-Changing transaction categories affects your reports. If you use "All transactions," your historical category totals will change retroactively.
+The budget immediately recalculates and now shows 650 USD spent (including all Food + Supermarket expenses).
 @endcomponent
 
 ---
 
-## API Example: Changing Category with Sync
+## API Example: Creating a Budget with Filters
 
 ```http
-PUT /budgets/{id}
+POST /budgets
 Content-Type: application/json
 
 {
-  "category_id": 456,
-  "sync_transactions": "all"
+  "name": "Monthly Food",
+  "description": "All food-related expenses",
+  "filters": {
+    "categories": [1, 2, 3],
+    "tags": [5, 8],
+    "exclude_transfers": true
+  },
+  "amount": 500,
+  "period": "monthly",
+  "anchor_date": "2025-01-15"
 }
 ```
 
-**Sync options:**
-- `"none"` - No synchronization
-- `"future"` - Sync transactions from today forward
-- `"all"` - Sync all linked transactions
+**Filter options:**
+- `categories` - Array of category IDs (at least one required if no tags)
+- `tags` - Array of tag IDs (at least one required if no categories)
+- `exclude_transfers` - Boolean, defaults to `true`
 
 ---
 
@@ -240,15 +299,17 @@ Useful for one-time period budgets that have ended.
 
 ## Budget tips
 
-1. **Start simple**: Create 3-5 budgets for your main expenses.
+1. **Use filters wisely**: Combine categories and tags for precise tracking without creating too many budgets.
 
-2. **Be realistic**: Base it on what you actually spend, not what you "should" spend.
+2. **Start simple**: Create 3-5 budgets for your main expenses.
 
-3. **Review and adjust**: If you always exceed it, maybe the limit is too low.
+3. **Be realistic**: Base it on what you actually spend, not what you "should" spend.
 
-4. **Use once period for goals**: Vacation savings, big purchases, etc.
+4. **Review and adjust**: If you always exceed it, maybe the limit is too low.
 
-5. **Not everything needs a budget**: Some expenses are fixed and don't make sense to budget.
+5. **Use tags for projects**: Track project expenses across categories with a single tag-based budget.
+
+6. **Use once period for goals**: Vacation savings, big purchases, etc.
 
 ---
 
