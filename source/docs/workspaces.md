@@ -72,10 +72,67 @@ When creating a workspace you define:
 |-------|-------------|
 | **Name** | Identifier (e.g., "Personal", "Family") |
 | **Reference currency** | The currency for your reports |
+| **Timezone** | The timezone for reports and date filters |
 
 ### Important about currency
 
 The reference currency **cannot be changed** after creating the workspace. Choose wisely from the start.
+
+---
+
+## Timezones
+
+Finerdy handles two different timezones to give you flexibility and consistency.
+
+### User timezone vs workspace timezone
+
+| Timezone | Used for | Configured in |
+|----------|----------|---------------|
+| **User timezone** | Creating/editing transactions, displaying dates in UI | Your profile settings |
+| **Workspace timezone** | Reports, date filters, budget period calculations | Workspace settings |
+
+### Why two timezones?
+
+The **user timezone** is personal. Each user sees dates formatted in their local time when viewing transactions.
+
+The **workspace timezone** is shared. It ensures all collaborators see the same date cutoffs in reports and filters, regardless of where they are.
+
+### Practical example
+
+Imagine a workspace shared between two people:
+
+```
+User A: Mexico City (UTC-6)
+User B: Madrid (UTC+1)
+Workspace timezone: Buenos Aires (UTC-3)
+```
+
+When both request "January transactions":
+
+- **They see the same transactions** - because the workspace timezone (Buenos Aires) determines what "January" means
+- **But each sees dates in their own format** - User A sees times in Mexico City time, User B sees them in Madrid time
+
+### When it matters
+
+Without a shared workspace timezone, the same query could return different results:
+
+```
+Query: "January 2024 transactions"
+
+User A in Mexico (UTC-6):
+  January = Dec 31 18:00 UTC to Jan 31 18:00 UTC
+
+User B in Spain (UTC+1):
+  January = Dec 31 23:00 UTC to Jan 31 23:00 UTC
+```
+
+With a workspace timezone, both users see identical data because "January" is defined by the workspace (Buenos Aires), not their personal location.
+
+### Default behavior
+
+- If you don't set a workspace timezone, it defaults to UTC
+- The user timezone affects how you see dates, not how data is filtered
+- Budget periods always use the workspace timezone for consistency
 
 ---
 
@@ -205,6 +262,8 @@ This action cannot be undone.
 |---------|-------------|
 | **Workspace** | Isolated space with its own data |
 | **Reference currency** | Defined at creation, cannot be changed |
+| **User timezone** | Personal setting for date display and transaction entry |
+| **Workspace timezone** | Shared setting for reports and date filters |
 | **Owner** | Owner with full control |
 | **Member** | Can view and modify |
 | **Viewer** | Can only view |

@@ -72,10 +72,67 @@ Al crear un workspace definís:
 |-------|-------------|
 | **Nombre** | Identificador (ej: "Personal", "Familia") |
 | **Moneda de referencia** | La moneda para tus reportes |
+| **Zona horaria** | La zona horaria para reportes y filtros de fecha |
 
 ### Importante sobre la moneda
 
 La moneda de referencia **no se puede cambiar** después de crear el workspace. Elegí bien desde el inicio.
+
+---
+
+## Zonas horarias
+
+Finerdy maneja dos zonas horarias diferentes para darte flexibilidad y consistencia.
+
+### Zona horaria del usuario vs del workspace
+
+| Zona horaria | Se usa para | Se configura en |
+|--------------|-------------|-----------------|
+| **Zona horaria del usuario** | Crear/editar transacciones, mostrar fechas en la UI | Tu configuración de perfil |
+| **Zona horaria del workspace** | Reportes, filtros de fecha, cálculo de períodos de presupuestos | Configuración del workspace |
+
+### ¿Por qué dos zonas horarias?
+
+La **zona horaria del usuario** es personal. Cada usuario ve las fechas formateadas en su hora local cuando mira transacciones.
+
+La **zona horaria del workspace** es compartida. Asegura que todos los colaboradores vean los mismos cortes de fecha en reportes y filtros, sin importar dónde estén.
+
+### Ejemplo práctico
+
+Imaginá un workspace compartido entre dos personas:
+
+```
+Usuario A: Ciudad de México (UTC-6)
+Usuario B: Madrid (UTC+1)
+Zona horaria del workspace: Buenos Aires (UTC-3)
+```
+
+Cuando ambos piden "transacciones de enero":
+
+- **Ven las mismas transacciones** - porque la zona horaria del workspace (Buenos Aires) determina qué significa "enero"
+- **Pero cada uno ve las fechas en su formato** - Usuario A ve las horas en hora de México, Usuario B las ve en hora de Madrid
+
+### Cuándo importa
+
+Sin una zona horaria compartida del workspace, la misma consulta podría devolver resultados diferentes:
+
+```
+Consulta: "transacciones de enero 2024"
+
+Usuario A en México (UTC-6):
+  Enero = 31 dic 18:00 UTC a 31 ene 18:00 UTC
+
+Usuario B en España (UTC+1):
+  Enero = 31 dic 23:00 UTC a 31 ene 23:00 UTC
+```
+
+Con una zona horaria del workspace, ambos usuarios ven datos idénticos porque "enero" está definido por el workspace (Buenos Aires), no por su ubicación personal.
+
+### Comportamiento por defecto
+
+- Si no configurás una zona horaria del workspace, por defecto es UTC
+- La zona horaria del usuario afecta cómo ves las fechas, no cómo se filtran los datos
+- Los períodos de presupuestos siempre usan la zona horaria del workspace para mantener consistencia
 
 ---
 
@@ -205,6 +262,8 @@ Esta acción no se puede deshacer.
 |----------|-------------|
 | **Workspace** | Espacio aislado con sus propios datos |
 | **Moneda de referencia** | Se define al crear, no se puede cambiar |
+| **Zona horaria del usuario** | Configuración personal para mostrar fechas y crear transacciones |
+| **Zona horaria del workspace** | Configuración compartida para reportes y filtros de fecha |
 | **Owner** | Dueño con control total |
 | **Member** | Puede ver y modificar |
 | **Viewer** | Solo puede ver |
