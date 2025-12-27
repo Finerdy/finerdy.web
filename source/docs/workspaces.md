@@ -169,13 +169,26 @@ To invite someone to your workspace:
 1. Go to workspace settings
 2. Enter the person's email
 3. Choose the role (Member or Viewer)
-4. The person receives an invitation
+4. Click "Invite"
+
+The person will receive an email with a link to join. They have 7 days to accept before the invitation expires.
+
+### If they don't receive the email
+
+You can resend the invitation from workspace settings. This also extends the expiration time.
+
+### If you change your mind
+
+You can cancel a pending invitation anytime from workspace settings.
+
+### When someone receives your invitation
+
+They click the link in the email, log in (or create an account), and accept or decline. Once accepted, the workspace appears in their workspace list.
 
 ### Important
 
 - Only the **Owner** can invite users
-- The invitee needs to create an account if they don't have one
-- You can change roles or remove users later
+- You can change someone's role or remove them later
 
 ---
 
