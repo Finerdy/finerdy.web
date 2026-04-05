@@ -152,7 +152,7 @@ Cuando un vencimiento ya no es relevante, podes **archivarlo** en vez de elimina
 - Archivar un vencimiento detiene la generacion automatica de nuevas cuotas
 
 @component('_partials.callout', ['type' => 'tip', 'title' => 'Archivar vs. eliminar'])
-Eliminar un vencimiento lo borra permanentemente (las cuotas pagadas se preservan). Archivar mantiene todo el historial accesible.
+Eliminar un vencimiento lo borra junto con todas sus cuotas permanentemente (las transacciones vinculadas se preservan). Archivar mantiene todo el historial de cuotas y pagos accesible.
 @endcomponent
 
 ---

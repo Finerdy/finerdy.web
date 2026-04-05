@@ -152,7 +152,7 @@ When a bill is no longer relevant, you can **archive** it instead of deleting it
 - Archiving a bill stops automatic generation of new occurrences
 
 @component('_partials.callout', ['type' => 'tip', 'title' => 'Archive vs. delete'])
-Deleting a bill removes it permanently (paid occurrences are preserved). Archiving keeps the full bill history accessible.
+Deleting a bill removes it and all its occurrences permanently (linked transactions are preserved). Archiving keeps the full bill and payment history accessible.
 @endcomponent
 
 ---
