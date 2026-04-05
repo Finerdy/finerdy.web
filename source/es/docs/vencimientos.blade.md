@@ -101,7 +101,7 @@ Cada cuota tiene uno de estos estados:
 | **Pendiente** | Aun no pagado, fecha de vencimiento en el futuro |
 | **Vencido** | Aun no pagado, la fecha de vencimiento ya paso (se calcula automaticamente) |
 | **Pagado** | Pago registrado, vinculado a una transaccion |
-| **Cancelado** | Omitido o anulado |
+| **Salteado** | Omitido intencionalmente |
 
 @component('_partials.callout', ['type' => 'info', 'title' => 'Vencido es automatico'])
 Vencido no es un estado almacenado — se calcula en tiempo real. Cualquier cuota pendiente con fecha pasada se muestra automaticamente como vencida.
@@ -138,7 +138,36 @@ La transaccion se registra en la moneda de la cuenta.
 
 ## Recordatorios por email
 
-Finerdy envia recordatorios por email **3 dias antes** de cada vencimiento a todos los miembros del workspace. Se ejecuta automaticamente, sin configuracion necesaria.
+Finerdy envia recordatorios por email para cuotas que vencen **dentro de los proximos 3 dias** a todos los miembros del workspace. Se ejecuta automaticamente, sin configuracion necesaria. Cada cuota recibe un solo recordatorio, y los recordatorios perdidos se recuperan en la siguiente ejecucion.
+
+---
+
+## Archivar vencimientos
+
+Cuando un vencimiento ya no es relevante, podes **archivarlo** en vez de eliminarlo. Los vencimientos archivados se ocultan del listado por defecto pero se preservan para el historial.
+
+- Archiva un vencimiento desde su pagina de detalle
+- Los vencimientos archivados se encuentran en la seccion **Archivados**
+- Desarchiva en cualquier momento para volver a la lista activa
+- Archivar un vencimiento detiene la generacion automatica de nuevas cuotas
+
+@component('_partials.callout', ['type' => 'tip', 'title' => 'Archivar vs. eliminar'])
+Eliminar un vencimiento lo borra permanentemente (las cuotas pagadas se preservan). Archivar mantiene todo el historial accesible.
+@endcomponent
+
+---
+
+## Vencimientos completados
+
+Un vencimiento se muestra con un badge de **Completado** cuando todas sus cuotas fueron pagadas o salteadas y no quedan pendientes. Esto es especialmente util para vencimientos personalizados/planes de cuotas con un numero fijo de pagos.
+
+```
+Vencimiento: Cuotas TV (Completado ✓)
+Cuotas:
+  1 Mayo: Pagado → Transaccion #201
+  1 Junio: Pagado → Transaccion #215
+  1 Julio: Pagado → Transaccion #230
+```
 
 ---
 

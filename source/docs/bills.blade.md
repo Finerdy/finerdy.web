@@ -101,7 +101,7 @@ Each bill occurrence has one of these statuses:
 | **Pending** | Not yet paid, due date in the future |
 | **Overdue** | Not yet paid, due date has passed (calculated automatically) |
 | **Paid** | Payment recorded, linked to a transaction |
-| **Cancelled** | Skipped or voided |
+| **Skipped** | Intentionally skipped |
 
 @component('_partials.callout', ['type' => 'info', 'title' => 'Overdue is automatic'])
 Overdue is not a stored status — it's calculated on-the-fly. Any pending occurrence with a past due date is automatically shown as overdue.
@@ -138,7 +138,36 @@ The transaction is recorded in the account's currency.
 
 ## Email reminders
 
-Finerdy sends email reminders **3 days before** a due date to all workspace members. This runs automatically — no configuration needed.
+Finerdy sends email reminders for occurrences due **within the next 3 days** to all workspace members. This runs automatically — no configuration needed. Each occurrence only receives one reminder, and missed reminders are caught up on the next run.
+
+---
+
+## Archiving bills
+
+When a bill is no longer relevant, you can **archive** it instead of deleting it. Archived bills are hidden from the default list but preserved for history.
+
+- Archive a bill from its detail page
+- Archived bills can be found under the **Archived** section
+- Unarchive at any time to bring it back to the active list
+- Archiving a bill stops automatic generation of new occurrences
+
+@component('_partials.callout', ['type' => 'tip', 'title' => 'Archive vs. delete'])
+Deleting a bill removes it permanently (paid occurrences are preserved). Archiving keeps the full bill history accessible.
+@endcomponent
+
+---
+
+## Completed bills
+
+A bill is shown with a **Completed** badge when all its occurrences have been paid or skipped and none are pending. This is especially useful for custom/installment bills with a fixed number of payments.
+
+```
+Bill: TV Payment Plan (Completed ✓)
+Occurrences:
+  May 1: Paid → Transaction #201
+  Jun 1: Paid → Transaction #215
+  Jul 1: Paid → Transaction #230
+```
 
 ---
 
