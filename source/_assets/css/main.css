@@ -1,14 +1,14 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* Google Fonts - JetBrains Mono */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+/* Google Fonts - Outfit (UI) + Spline Sans Mono (numbers/code) */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap');
 
 /* Tailwind v4 Theme Configuration */
 @theme {
     /* Font Family */
-    --font-sans: 'JetBrains Mono', monospace;
-    --font-mono: 'JetBrains Mono', monospace;
+    --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-mono: 'Spline Sans Mono', ui-monospace, SFMono-Regular, monospace;
 
     /* Primary Colors (Red) */
     --color-primary-50: #fef2f2;
@@ -40,8 +40,14 @@
 /* Base Styles */
 html {
     scroll-behavior: smooth;
+    font-size: 17px;
 }
 
 body {
     font-family: var(--font-sans);
+    letter-spacing: 0.015em;
+}
+
+.font-mono {
+    letter-spacing: 0;
 }
