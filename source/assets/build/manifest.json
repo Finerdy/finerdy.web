@@ -1,13 +1,22 @@
 {
+  "node_modules/fuse.js/dist/fuse.mjs": {
+    "file": "assets/fuse-D6p4KMCL.js",
+    "name": "fuse",
+    "src": "node_modules/fuse.js/dist/fuse.mjs",
+    "isDynamicEntry": true
+  },
   "source/_assets/css/main.css": {
-    "file": "assets/main-DHi1cRvt.css",
+    "file": "assets/main-mK1QKaj8.css",
     "src": "source/_assets/css/main.css",
     "isEntry": true
   },
   "source/_assets/js/main.js": {
-    "file": "assets/main-B9cVQ7hv.js",
+    "file": "assets/main-VtH1LH1t.js",
     "name": "main",
     "src": "source/_assets/js/main.js",
-    "isEntry": true
+    "isEntry": true,
+    "dynamicImports": [
+      "node_modules/fuse.js/dist/fuse.mjs"
+    ]
   }
 }

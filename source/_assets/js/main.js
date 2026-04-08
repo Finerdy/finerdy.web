@@ -1,3 +1,5 @@
+import './search.js';
+
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
     const menuButton = document.getElementById('mobile-menu-button');

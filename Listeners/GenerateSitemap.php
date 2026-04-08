@@ -16,6 +16,14 @@ class GenerateSitemap
 
     public function handle(Jigsaw $jigsaw)
     {
+        $baseUrl = $jigsaw->getConfig('baseUrl');
+
+        // Sitemaps require absolute URLs; skip generation in environments
+        // without a configured baseUrl (e.g. `jigsaw build local`).
+        if (empty($baseUrl)) {
+            return;
+        }
+
         $sitemap = new Sitemap($jigsaw->getDestinationPath() . '/sitemap.xml');
 
         $jigsaw->getPages()->each(function ($page, $path) use ($sitemap) {

@@ -99,6 +99,26 @@
                     </div>
 
                     <div class="flex items-center gap-4">
+                        <div class="relative hidden sm:block">
+                            <input
+                                id="docs-search-input"
+                                type="search"
+                                role="combobox"
+                                aria-expanded="false"
+                                aria-controls="docs-search-results"
+                                aria-autocomplete="list"
+                                autocomplete="off"
+                                placeholder="{{ $lang === 'en' ? 'Search docs…' : 'Buscar docs…' }}"
+                                data-lang="{{ $lang }}"
+                                data-empty="{{ $lang === 'en' ? 'No results' : 'Sin resultados' }}"
+                                data-loading="{{ $lang === 'en' ? 'Loading…' : 'Cargando…' }}"
+                                data-unavailable="{{ $lang === 'en' ? 'Search unavailable' : 'Búsqueda no disponible' }}"
+                                class="w-64 rounded-md border border-gray-200 bg-gray-50 px-3 py-1.5 text-sm text-gray-900 placeholder:text-gray-400 focus:bg-white focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20">
+                            <div
+                                id="docs-search-results"
+                                role="listbox"
+                                class="hidden absolute right-0 top-full mt-2 w-96 max-h-96 overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg z-50"></div>
+                        </div>
                         <a href="{{ $otherLangUrl }}" class="inline-flex items-center gap-1 rounded-md bg-gray-100 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors">
                             {{ $otherLangName }}
                         </a>
