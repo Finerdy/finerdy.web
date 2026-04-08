@@ -12,6 +12,8 @@ class GenerateSitemap
         '/CNAME',
         '/favicon.ico',
         '/robots',
+        '/site.webmanifest',
+        '/site',
     ];
 
     public function handle(Jigsaw $jigsaw)

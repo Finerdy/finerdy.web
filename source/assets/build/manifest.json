@@ -1,4 +1,76 @@
 {
+  "node_modules/@fontsource/outfit/files/outfit-latin-300-normal.woff": {
+    "file": "assets/outfit-latin-300-normal-AWLfuCom.woff",
+    "src": "node_modules/@fontsource/outfit/files/outfit-latin-300-normal.woff"
+  },
+  "node_modules/@fontsource/outfit/files/outfit-latin-300-normal.woff2": {
+    "file": "assets/outfit-latin-300-normal-CRYTwY6m.woff2",
+    "src": "node_modules/@fontsource/outfit/files/outfit-latin-300-normal.woff2"
+  },
+  "node_modules/@fontsource/outfit/files/outfit-latin-400-normal.woff": {
+    "file": "assets/outfit-latin-400-normal-DMwTpYkH.woff",
+    "src": "node_modules/@fontsource/outfit/files/outfit-latin-400-normal.woff"
+  },
+  "node_modules/@fontsource/outfit/files/outfit-latin-400-normal.woff2": {
+    "file": "assets/outfit-latin-400-normal-BGsTXAXT.woff2",
+    "src": "node_modules/@fontsource/outfit/files/outfit-latin-400-normal.woff2"
+  },
+  "node_modules/@fontsource/outfit/files/outfit-latin-500-normal.woff": {
+    "file": "assets/outfit-latin-500-normal-ClnHRwRh.woff",
+    "src": "node_modules/@fontsource/outfit/files/outfit-latin-500-normal.woff"
+  },
+  "node_modules/@fontsource/outfit/files/outfit-latin-500-normal.woff2": {
+    "file": "assets/outfit-latin-500-normal-DKnIMDSk.woff2",
+    "src": "node_modules/@fontsource/outfit/files/outfit-latin-500-normal.woff2"
+  },
+  "node_modules/@fontsource/outfit/files/outfit-latin-600-normal.woff": {
+    "file": "assets/outfit-latin-600-normal-BEfTtDA7.woff",
+    "src": "node_modules/@fontsource/outfit/files/outfit-latin-600-normal.woff"
+  },
+  "node_modules/@fontsource/outfit/files/outfit-latin-600-normal.woff2": {
+    "file": "assets/outfit-latin-600-normal-B7SfZ07L.woff2",
+    "src": "node_modules/@fontsource/outfit/files/outfit-latin-600-normal.woff2"
+  },
+  "node_modules/@fontsource/outfit/files/outfit-latin-700-normal.woff": {
+    "file": "assets/outfit-latin-700-normal-D4itBLBr.woff",
+    "src": "node_modules/@fontsource/outfit/files/outfit-latin-700-normal.woff"
+  },
+  "node_modules/@fontsource/outfit/files/outfit-latin-700-normal.woff2": {
+    "file": "assets/outfit-latin-700-normal-Cu9v6i1X.woff2",
+    "src": "node_modules/@fontsource/outfit/files/outfit-latin-700-normal.woff2"
+  },
+  "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-400-normal.woff": {
+    "file": "assets/spline-sans-mono-latin-400-normal-739QRW1l.woff",
+    "src": "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-400-normal.woff"
+  },
+  "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-400-normal.woff2": {
+    "file": "assets/spline-sans-mono-latin-400-normal-mUpA6Mve.woff2",
+    "src": "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-400-normal.woff2"
+  },
+  "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-500-normal.woff": {
+    "file": "assets/spline-sans-mono-latin-500-normal-DuiJ5LHB.woff",
+    "src": "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-500-normal.woff"
+  },
+  "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-500-normal.woff2": {
+    "file": "assets/spline-sans-mono-latin-500-normal-Cy_wwipl.woff2",
+    "src": "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-500-normal.woff2"
+  },
+  "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-600-normal.woff": {
+    "file": "assets/spline-sans-mono-latin-600-normal-ZCqv2Jod.woff",
+    "src": "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-600-normal.woff"
+  },
+  "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-600-normal.woff2": {
+    "file": "assets/spline-sans-mono-latin-600-normal-BrWm9FVc.woff2",
+    "src": "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-600-normal.woff2"
+  },
+  "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-700-normal.woff": {
+    "file": "assets/spline-sans-mono-latin-700-normal-BLdnetBw.woff",
+    "src": "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-700-normal.woff"
+  },
+  "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-700-normal.woff2": {
+    "file": "assets/spline-sans-mono-latin-700-normal-BwW4xXNM.woff2",
+    "src": "node_modules/@fontsource/spline-sans-mono/files/spline-sans-mono-latin-700-normal.woff2"
+  },
   "node_modules/fuse.js/dist/fuse.mjs": {
     "file": "assets/fuse-D6p4KMCL.js",
     "name": "fuse",
@@ -6,7 +78,7 @@
     "isDynamicEntry": true
   },
   "source/_assets/css/main.css": {
-    "file": "assets/main-mK1QKaj8.css",
+    "file": "assets/main-BHF-MxVs.css",
     "src": "source/_assets/css/main.css",
     "isEntry": true
   },

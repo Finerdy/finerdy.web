@@ -2,46 +2,79 @@
     $lang = $page->language ?? 'en';
     $defaultDescription = $lang === 'en' ? 'Finerdy Documentation' : 'Documentación de Finerdy';
     $description = $page->description ?? $defaultDescription;
-
-    // Hreflang: map current doc path to alternate language
+    $baseUrl = rtrim($page->baseUrl, '/');
     $currentPath = $page->getPath();
-    $altLangUrl = $lang === 'en'
-        ? $page->baseUrl . '/es' . str_replace('/docs', '/docs', $currentPath)
-        : $page->baseUrl . str_replace('/es/docs', '/docs', $currentPath);
+
+    // Canonical ES↔EN doc slug mapping. Ordered pairs, used for hreflang alternates
+    // and BreadcrumbList. Keep in sync with $navItems below.
+    $docPairs = [
+        ['/docs/',              '/es/docs/'],
+        ['/docs/concepts/',     '/es/docs/conceptos/'],
+        ['/docs/transactions/', '/es/docs/transacciones/'],
+        ['/docs/corrections/',  '/es/docs/correcciones/'],
+        ['/docs/reports/',      '/es/docs/reportes/'],
+        ['/docs/budgets/',      '/es/docs/presupuestos/'],
+        ['/docs/bills/',        '/es/docs/vencimientos/'],
+        ['/docs/archiving/',    '/es/docs/archivar/'],
+        ['/docs/workspaces/',   '/es/docs/workspaces/'],
+    ];
+
+    // Find the alt-language slug for the current page. Fall back to the docs
+    // index in the other language if no pair matches.
+    $altPath = $lang === 'en' ? '/es/docs/' : '/docs/';
+    $normalized = '/' . trim($currentPath, '/') . '/';
+    foreach ($docPairs as [$en, $es]) {
+        if ($lang === 'en' && $en === $normalized) {
+            $altPath = $es;
+            break;
+        }
+        if ($lang === 'es' && $es === $normalized) {
+            $altPath = $en;
+            break;
+        }
+    }
+    $altLangUrl = $baseUrl . $altPath;
+    $enUrl = $lang === 'en' ? $page->getUrl() : $altLangUrl;
+    $esUrl = $lang === 'es' ? $page->getUrl() : $altLangUrl;
+    $ogImageUrl = $baseUrl . '/assets/images/og-image.png';
 @endphp
 <!DOCTYPE html>
 <html lang="{{ $lang }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ef4444">
         <link rel="canonical" href="{{ $page->getUrl() }}">
         <meta name="description" content="{{ $description }}">
 
         <title>{{ $page->title }} | Docs | {{ $page->siteName }}</title>
 
-        <!-- Favicon -->
+        <!-- Favicon / PWA -->
         <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
 
         <!-- Hreflang -->
-        <link rel="alternate" hreflang="en" href="{{ $lang === 'en' ? $page->getUrl() : $altLangUrl }}">
-        <link rel="alternate" hreflang="es" href="{{ $lang === 'es' ? $page->getUrl() : $altLangUrl }}">
-        <link rel="alternate" hreflang="x-default" href="{{ $page->baseUrl }}/docs/">
+        <link rel="alternate" hreflang="en" href="{{ $enUrl }}">
+        <link rel="alternate" hreflang="es" href="{{ $esUrl }}">
+        <link rel="alternate" hreflang="x-default" href="{{ $enUrl }}">
 
         <!-- Open Graph -->
         <meta property="og:title" content="{{ $page->title }} | Docs | {{ $page->siteName }}">
         <meta property="og:description" content="{{ $description }}">
         <meta property="og:type" content="article">
         <meta property="og:url" content="{{ $page->getUrl() }}">
-        <meta property="og:image" content="{{ $page->baseUrl }}/assets/images/og-image.png">
+        <meta property="og:image" content="{{ $ogImageUrl }}">
         <meta property="og:locale" content="{{ $lang === 'en' ? 'en_US' : 'es_ES' }}">
+        <meta property="og:locale:alternate" content="{{ $lang === 'en' ? 'es_ES' : 'en_US' }}">
         <meta property="og:site_name" content="{{ $page->siteName }}">
 
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary">
         <meta name="twitter:title" content="{{ $page->title }} | Docs | {{ $page->siteName }}">
         <meta name="twitter:description" content="{{ $description }}">
-        <meta name="twitter:image" content="{{ $page->baseUrl }}/assets/images/og-image.png">
+        <meta name="twitter:image" content="{{ $ogImageUrl }}">
 
         <!-- Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PYXV6Y0ZJ"></script>
@@ -55,6 +88,59 @@
         @viteRefresh()
         <link rel="stylesheet" href="{{ vite('source/_assets/css/main.css') }}">
         <script defer type="module" src="{{ vite('source/_assets/js/main.js') }}"></script>
+
+        <!-- Structured Data -->
+        @php
+            $docsHomeUrl = $baseUrl . ($lang === 'en' ? '/docs/' : '/es/docs/');
+            $siteHomeUrl = $baseUrl . ($lang === 'en' ? '/' : '/es/');
+            $docsLabel = $lang === 'en' ? 'Docs' : 'Documentación';
+            $homeLabel = $lang === 'en' ? 'Home' : 'Inicio';
+            $isDocsIndex = rtrim($page->getUrl(), '/') === rtrim($docsHomeUrl, '/');
+
+            $articleLd = [
+                '@context' => 'https://schema.org',
+                '@type' => 'TechArticle',
+                'headline' => $page->title,
+                'description' => $description,
+                'inLanguage' => $lang,
+                'url' => $page->getUrl(),
+                'image' => $ogImageUrl,
+                'author' => [
+                    '@type' => 'Organization',
+                    'name' => $page->siteName,
+                    'url' => $baseUrl . '/',
+                ],
+                'publisher' => [
+                    '@type' => 'Organization',
+                    'name' => $page->siteName,
+                    'url' => $baseUrl . '/',
+                    'logo' => [
+                        '@type' => 'ImageObject',
+                        'url' => $baseUrl . '/assets/images/logo.svg',
+                    ],
+                ],
+            ];
+
+            $breadcrumbItems = [
+                ['@type' => 'ListItem', 'position' => 1, 'name' => $homeLabel, 'item' => $siteHomeUrl],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => $docsLabel, 'item' => $docsHomeUrl],
+            ];
+            if (! $isDocsIndex) {
+                $breadcrumbItems[] = [
+                    '@type' => 'ListItem',
+                    'position' => 3,
+                    'name' => $page->title,
+                    'item' => $page->getUrl(),
+                ];
+            }
+            $breadcrumbLd = [
+                '@context' => 'https://schema.org',
+                '@type' => 'BreadcrumbList',
+                'itemListElement' => $breadcrumbItems,
+            ];
+        @endphp
+        <script type="application/ld+json">{!! json_encode($articleLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+        <script type="application/ld+json">{!! json_encode($breadcrumbLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
     </head>
     <body class="bg-white text-gray-900 antialiased">
         @php
