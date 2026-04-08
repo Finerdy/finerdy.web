@@ -1,8 +1,8 @@
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
-
 /* Google Fonts - Outfit (UI) + Spline Sans Mono (numbers/code) */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* Tailwind v4 Theme Configuration */
 @theme {
