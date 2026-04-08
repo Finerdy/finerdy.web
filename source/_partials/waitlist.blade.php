@@ -28,13 +28,13 @@
                         id="waitlist-email"
                         required
                         placeholder="{{ $t['waitlist']['placeholder'] }}"
-                        class="min-w-0 flex-auto rounded-lg border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                        class="min-w-0 flex-auto rounded-lg border-0 px-4 py-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
                     >
                     <input type="hidden" name="_language" value="{{ $lang }}">
                     <button
                         type="submit"
                         id="waitlist-button"
-                        class="flex-none rounded-lg bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        class="flex-none rounded-lg bg-primary-600 px-6 py-3 text-sm font-semibold text-white hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         <span id="button-text">{{ $t['waitlist']['button'] }}</span>
                         <span id="button-loading" class="hidden">

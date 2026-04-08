@@ -26,7 +26,7 @@
         <!-- Features grid -->
         <div class="mt-16 grid gap-8 sm:grid-cols-2">
             @foreach($t['features']['items'] as $index => $feature)
-            <div class="relative rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-200 transition-all hover:shadow-md hover:ring-primary-200">
+            <div class="relative rounded-2xl bg-white p-8 ring-1 ring-gray-200 transition-all hover:ring-primary-300">
                 <!-- Icon -->
                 <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 text-primary-600">
                     {!! $icons[$index] !!}
