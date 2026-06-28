@@ -40,7 +40,7 @@ La solución es **archivar**. Cuando archivás un elemento, queda oculto del uso
 
 ### Qué pasa cuando archivás
 
-- **Desaparece de las listas**: No aparecerá en los menús desplegables al crear nuevas transacciones
+- **Desaparece de las listas**: No aparecerá en el listado principal de cuentas ni en los selectores al crear nuevas transacciones, transferencias o cambios de moneda
 - **Oculto de la vista activa**: Las listas principales solo muestran elementos activos
 - **Accesible en archivo**: Podés ver todos los elementos archivados en una sección dedicada
 - **Historial intacto**: Todas las transacciones pasadas quedan sin tocar
@@ -49,15 +49,26 @@ La solución es **archivar**. Cuando archivás un elemento, queda oculto del uso
 ### Cómo archivar
 
 **Para cuentas:**
-1. Andá a la página de detalle de la cuenta
-2. Tocá el menú (⋮) o ícono de configuración
-3. Seleccioná **"Archivar cuenta"**
+1. Andá al listado de **Cuentas**
+2. Abrí el menú de acciones de la cuenta (⋮)
+3. Seleccioná **"Archivar"**
 4. Confirmá
 
 **Para categorías y etiquetas:**
 1. Andá a configuración o la página de edición del elemento
 2. Seleccioná **"Archivar"**
 3. Confirmá
+
+@component('_partials.callout', ['type' => 'info', 'title' => 'Archivar una cuenta nunca falla'])
+A diferencia de la eliminación, archivar una cuenta siempre funciona — incluso si la cuenta tiene transacciones. Es la forma segura y reversible de retirar una cuenta que ya no usás.
+@endcomponent
+
+### Qué afecta archivar una cuenta
+
+- **Listados y selectores**: La cuenta deja de aparecer en el listado principal de cuentas y en los selectores que se usan para crear nuevas transacciones, transferencias y cambios de moneda.
+- **Dashboard y patrimonio neto**: El saldo de una cuenta archivada se **excluye** de los totales del dashboard y del patrimonio neto.
+- **Edición de transacciones viejas**: Si editás una transacción vieja que ya usaba la cuenta archivada, la cuenta sigue visible en ese selector para que puedas guardar los cambios. Archivar nunca rompe las transacciones existentes.
+- **Historial de transacciones**: Todas las transacciones vinculadas a la cuenta quedan intactas y siguen apareciendo en reportes e historial.
 
 @component('_partials.callout', ['type' => 'info', 'title' => 'Ejemplo de uso'])
 Tenías una categoría "Gastos de Negocio" para un proyecto freelance que terminó. Archivala—tus datos históricos quedan intactos, pero no va a saturar tu lista de categorías activas.
@@ -71,8 +82,14 @@ Los elementos archivados no están eliminados—solo están ocultos de la vista 
 
 ### Cómo ver elementos archivados
 
+**Para cuentas:**
+1. Andá al listado de **Cuentas**
+2. Tocá **"Cuentas archivadas"**
+3. Mirá todas las cuentas archivadas
+
+**Para categorías y etiquetas:**
 1. Andá a **Configuración**
-2. Navegá a **Cuentas**, **Categorías** o **Etiquetas**
+2. Navegá a **Categorías** o **Etiquetas**
 3. Activá **"Mostrar Archivados"** o seleccioná la pestaña **"Archivados"**
 4. Mirá todos los elementos archivados
 
@@ -85,6 +102,8 @@ Los elementos archivados no están eliminados—solo están ocultos de la vista 
 | **Desarchivar** | Sí (restaura al estado activo) |
 | **Editar detalles** | Sí (nombre, descripción, etc.) |
 | **Usar en nuevas transacciones** | No (tenés que desarchivar primero) |
+| **Mantener en transacciones viejas** | Sí — una cuenta archivada sigue disponible al editar una transacción que ya la usaba |
+| **Suma al dashboard / patrimonio neto** | No (los saldos de cuentas archivadas se excluyen) |
 | **Eliminar** | Solo si transferís las transacciones primero |
 
 ---
@@ -95,10 +114,12 @@ Los elementos archivados no están eliminados—solo están ocultos de la vista 
 
 ### Cómo desarchivar
 
-1. Mirá los elementos archivados (ver sección anterior)
+1. Mirá los elementos archivados (ver sección anterior). Para cuentas, abrí la página **"Cuentas archivadas"** desde el listado de Cuentas.
 2. Seleccioná el elemento que querés restaurar
 3. Tocá **"Desarchivar"**
 4. El elemento vuelve al estado activo inmediatamente
+
+Cuando desarchivás una cuenta, vuelve a aparecer en el listado principal de cuentas, en los selectores de transacciones, transferencias y cambios de moneda, y su saldo vuelve a incluirse en los totales del dashboard y en el patrimonio neto.
 
 @component('_partials.callout', ['type' => 'tip', 'title' => 'Restauración rápida'])
 Desarchivar no tiene efectos secundarios—todas las transacciones que estaban vinculadas al elemento permanecen exactamente como estaban.
@@ -203,7 +224,8 @@ DELETE /tags/{id}
 **Mejor enfoque:**
 1. **Archivá** la cuenta vieja
 2. Tus transacciones históricas siguen visibles en los reportes
-3. La cuenta no aparecerá al crear nuevas transacciones
+3. La cuenta no aparecerá al crear nuevas transacciones, transferencias o cambios de moneda
+4. Su saldo ya no distorsiona los totales del dashboard ni el patrimonio neto
 
 **No hagas:** Transferir y eliminar—perderás el contexto histórico.
 

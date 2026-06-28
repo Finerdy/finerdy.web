@@ -157,6 +157,7 @@
                 ['url' => $docsBase . '/reports/', 'title' => 'Reports'],
                 ['url' => $docsBase . '/budgets/', 'title' => 'Budgets'],
                 ['url' => $docsBase . '/bills/', 'title' => 'Bills & Due Dates'],
+                ['url' => $docsBase . '/archiving/', 'title' => 'Archiving'],
                 ['url' => $docsBase . '/workspaces/', 'title' => 'Workspaces'],
                 ['url' => 'https://api.finerdy.app/docs/api#/', 'title' => 'API Docs', 'external' => true],
             ] : [
@@ -167,6 +168,7 @@
                 ['url' => $docsBase . '/reportes/', 'title' => 'Reportes'],
                 ['url' => $docsBase . '/presupuestos/', 'title' => 'Presupuestos'],
                 ['url' => $docsBase . '/vencimientos/', 'title' => 'Vencimientos'],
+                ['url' => $docsBase . '/archivar/', 'title' => 'Archivar'],
                 ['url' => $docsBase . '/workspaces/', 'title' => 'Workspaces'],
                 ['url' => 'https://api.finerdy.app/docs/api#/', 'title' => 'API Docs', 'external' => true],
             ];

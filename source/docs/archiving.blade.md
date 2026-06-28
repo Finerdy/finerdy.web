@@ -40,7 +40,7 @@ The solution is **archiving**. When you archive an item, it becomes hidden from 
 
 ### What happens when you archive
 
-- **Disappears from lists**: Won't show in dropdowns when creating new transactions
+- **Disappears from lists**: Won't show in the main accounts list or in the dropdowns when creating new transactions, transfers, or exchanges
 - **Hidden from active view**: Main lists only show active items
 - **Accessible in archive**: View all archived items in a dedicated section
 - **History intact**: All past transactions remain untouched
@@ -49,15 +49,26 @@ The solution is **archiving**. When you archive an item, it becomes hidden from 
 ### How to archive
 
 **For accounts:**
-1. Go to the account detail page
-2. Tap the menu (⋮) or settings icon
-3. Select **"Archive account"**
+1. Go to the **Accounts** list
+2. Open the account's actions menu (⋮)
+3. Select **"Archive"**
 4. Confirm
 
 **For categories and tags:**
 1. Go to settings or the item's edit page
 2. Select **"Archive"**
 3. Confirm
+
+@component('_partials.callout', ['type' => 'info', 'title' => 'Archiving an account never fails'])
+Unlike deletion, archiving an account always works — even if the account has transactions. It's the safe, reversible way to retire an account you no longer use.
+@endcomponent
+
+### What archiving an account affects
+
+- **Account lists & selectors**: The account stops appearing in the main accounts list and in the selectors used to create new transactions, transfers, and exchanges.
+- **Dashboard & net worth**: The balance of an archived account is **excluded** from your dashboard totals and net worth.
+- **Editing old transactions**: If you edit an older transaction that already used the archived account, the account stays visible in that selector so you can still save your changes. Archiving never breaks existing transactions.
+- **Transaction history**: Every transaction tied to the account stays intact and keeps showing in reports and history.
 
 @component('_partials.callout', ['type' => 'info', 'title' => 'Example use case'])
 You had a "Business Expenses" category for a freelance project that ended. Archive it—your historical data stays intact, but it won't clutter your active category list.
@@ -71,8 +82,14 @@ Archived items are not deleted—they're just hidden from normal view.
 
 ### How to see archived items
 
+**For accounts:**
+1. Go to the **Accounts** list
+2. Tap **"Archived accounts"**
+3. View all archived accounts
+
+**For categories and tags:**
 1. Go to **Settings**
-2. Navigate to **Accounts**, **Categories**, or **Tags**
+2. Navigate to **Categories** or **Tags**
 3. Toggle **"Show Archived"** or select the **"Archived"** tab
 4. View all archived items
 
@@ -85,6 +102,8 @@ Archived items are not deleted—they're just hidden from normal view.
 | **Unarchive** | Yes (restores to active status) |
 | **Edit details** | Yes (name, description, etc.) |
 | **Use in new transactions** | No (must unarchive first) |
+| **Keep in old transactions** | Yes — an archived account stays available when editing a transaction that already used it |
+| **Counts toward dashboard / net worth** | No (archived account balances are excluded) |
 | **Delete** | Only if you transfer transactions first |
 
 ---
@@ -95,10 +114,12 @@ Changed your mind? Unarchiving is simple and instant.
 
 ### How to unarchive
 
-1. View archived items (see previous section)
+1. View archived items (see previous section). For accounts, open the **"Archived accounts"** page from the Accounts list.
 2. Select the item you want to restore
 3. Tap **"Unarchive"**
 4. The item returns to active status immediately
+
+When you unarchive an account, it reappears in the main accounts list, in the transaction/transfer/exchange selectors, and its balance is once again included in your dashboard totals and net worth.
 
 @component('_partials.callout', ['type' => 'tip', 'title' => 'Quick restore'])
 Unarchiving has no side effects—all transactions that were linked to the item remain exactly as they were.
@@ -203,7 +224,8 @@ DELETE /tags/{id}
 **Best approach:**
 1. **Archive** the old account
 2. Your historical transactions remain visible in reports
-3. The account won't appear when creating new transactions
+3. The account won't appear when creating new transactions, transfers, or exchanges
+4. Its balance no longer skews your dashboard totals or net worth
 
 **Don't:** Transfer and delete—you'll lose the historical context.
 
