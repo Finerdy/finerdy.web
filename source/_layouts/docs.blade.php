@@ -17,6 +17,7 @@
         ['/docs/bills/',        '/es/docs/vencimientos/'],
         ['/docs/archiving/',    '/es/docs/archivar/'],
         ['/docs/workspaces/',   '/es/docs/workspaces/'],
+        ['/docs/api-integration/', '/es/docs/api-integracion/'],
     ];
 
     // Find the alt-language slug for the current page. Fall back to the docs
@@ -159,6 +160,7 @@
                 ['url' => $docsBase . '/bills/', 'title' => 'Bills & Due Dates'],
                 ['url' => $docsBase . '/archiving/', 'title' => 'Archiving'],
                 ['url' => $docsBase . '/workspaces/', 'title' => 'Workspaces'],
+                ['url' => $docsBase . '/api-integration/', 'title' => 'API & Integrations'],
                 ['url' => 'https://api.finerdy.app/docs/api#/', 'title' => 'API Docs', 'external' => true],
             ] : [
                 ['url' => $docsBase . '/', 'title' => 'Introducción'],
@@ -170,6 +172,7 @@
                 ['url' => $docsBase . '/vencimientos/', 'title' => 'Vencimientos'],
                 ['url' => $docsBase . '/archivar/', 'title' => 'Archivar'],
                 ['url' => $docsBase . '/workspaces/', 'title' => 'Workspaces'],
+                ['url' => $docsBase . '/api-integracion/', 'title' => 'API e Integraciones'],
                 ['url' => 'https://api.finerdy.app/docs/api#/', 'title' => 'API Docs', 'external' => true],
             ];
         @endphp
