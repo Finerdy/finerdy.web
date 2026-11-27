@@ -148,7 +148,7 @@ If you really need to delete an account, category, or tag with transactions, you
 
 **For categories:**
 - Can only transfer to another category of the **same type** (income or expense)
-- All budgets linked to transactions will update
+- Budgets that filter by the destination category will count the moved transactions
 
 **For tags:**
 - Can transfer to any other tag

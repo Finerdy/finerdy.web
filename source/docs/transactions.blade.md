@@ -79,7 +79,6 @@ An **expense** represents money leaving an account.
 - **Category** - Type of expense (Groceries, Utilities, etc.)
 - **Description** - Optional details
 - **Date** - When it happened
-- **Budget** - Optional, to track against a budget
 
 ### Example
 
