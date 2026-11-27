@@ -79,7 +79,6 @@ Un **gasto** representa dinero que sale de una cuenta.
 - **Categoría** - Tipo de gasto (Supermercado, Servicios, etc.)
 - **Descripción** - Detalle opcional
 - **Fecha** - Cuándo ocurrió
-- **Presupuesto** - Opcional, para trackear contra un presupuesto
 
 ### Ejemplo
 

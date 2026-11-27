@@ -148,7 +148,7 @@ Si realmente necesitás eliminar una cuenta, categoría o etiqueta con transacci
 
 **Para categorías:**
 - Solo se puede transferir a otra categoría del **mismo tipo** (ingreso o gasto)
-- Todos los presupuestos vinculados a las transacciones se actualizarán
+- Los presupuestos que filtran por la categoría destino van a contar las transacciones movidas
 
 **Para etiquetas:**
 - Se puede transferir a cualquier otra etiqueta
